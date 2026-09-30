@@ -1,0 +1,239 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+    *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Ubuntu', sans-serif;
+     }
+
+
+
+
+.tutorial{
+    background:#0b0f19;
+    padding: 200px 200px;
+    height: auto;
+    
+}
+
+.tutorial-container{
+    width:90%;
+    max-width:1300px;
+    margin: 0 auto;
+   
+}
+
+.header-title{
+    color:#ff3b3b;
+    font-size: 18px;
+    
+}
+
+.divider {
+  border: none;
+  height: 1px;
+  background: #1f2937;
+  width: 1500px;
+  margin: 20px 0;
+}
+
+.tutorial-subtitle{
+    color:white;
+    text-transform:uppercase;
+    font-size: 2rem;
+    letter-spacing:2px;
+    font-weight:700;
+}
+
+.tutorial-heading{
+    color:white;
+    font-size:48px;
+    margin:10px 0 50px;
+}
+
+.tutorial-grid{
+
+    display:grid;
+    margin-top: 60px;
+    gap: 30px;
+    grid-template-columns:repeat(3,1fr);
+    
+
+}
+
+.tutorial-card{
+ 
+    width: 95%;
+    height: 90%;
+    background:#111827;
+    border-radius:15px;
+    overflow:hidden;
+    border:1px solid #20293c;
+    transition:.35s;
+    overflow: hidden;
+    cursor: pointer;
+    
+
+}
+
+.tutorial-card:hover{
+
+    transform:translateY(-8px);
+    border-color:#ff3b3b;
+
+}
+
+
+/* hidden button */
+
+.view-btn{
+    padding: 1rem 2rem;
+    margin: 0 auto;
+    border: none;
+    border-radius: 36px;
+    opacity: 0;
+    visibility: hidden;
+    cursor: pointer;
+    transform: translate(95%, -120%);
+    transition: all .3s ease;
+    font-weight: bold;
+}
+
+
+
+.view-btn:hover{
+    background: #ff3b3b;
+    color: whitesmoke;
+    font-weight: bold;
+}
+
+
+
+.tutorial-card:hover .view-btn{
+    opacity: 1;
+    visibility: visible;
+}
+
+
+.tutorial-card img{
+
+    width:100%;
+    height:230px;
+    object-fit:cover;
+
+}
+
+
+.tutorial-grid h2{
+     color: #ff3b3b;
+     font-size: 20px;
+}
+
+.tutorial-grid h5{
+    color: whitesmoke;
+    margin-top: 20px;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.tutorial-grid  p {
+    color: whitesmoke;
+    font-size: 10px;
+    margin-top: 5px;
+    font-weight: lighter;
+}
+.tutorial-info{
+
+    padding:25px;
+
+}
+
+.tutorial-tag{
+
+    display:inline-block;
+    background:#ff3b3b;
+    color:white;
+    padding:6px 14px;
+    border-radius:30px;
+    font-size:13px;
+    font-weight:600;
+    margin-bottom:18px;
+
+}
+
+.tutorial-info h3{
+
+    color:white;
+    line-height:1.5;
+    font-size:22px;
+    margin-bottom:20px;
+
+}
+
+.tutorial-meta{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+}
+
+.tutorial-meta span{
+
+    display:flex;
+    align-items:center;
+    gap:8px;
+
+    color:#7f91b3;
+    font-size:15px;
+
+}
+
+.tutorial-meta button{
+
+    background:transparent;
+    border:none;
+    color:#ff3b3b;
+
+    display:flex;
+    align-items:center;
+    gap:8px;
+
+    cursor:pointer;
+    font-weight:600;
+    transition:.3s;
+
+}
+
+.tutorial-meta button:hover{
+
+    gap:12px;
+
+}
+
+@media(max-width:992px){
+
+.tutorial-grid{
+
+grid-template-columns:1fr 1fr;
+
+}
+
+}
+
+@media(max-width:700px){
+
+.tutorial-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.tutorial-heading{
+
+font-size:38px;
+
+}
+
+}

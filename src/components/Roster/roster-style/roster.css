@@ -1,0 +1,167 @@
+    @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+
+
+    *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Ubuntu', sans-serif;
+        }
+
+
+
+
+.roster{
+    background:#0b0f19;
+    padding: 200px 200px;
+    height: auto;
+    
+}
+
+.roster::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url('../data/pwet.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    opacity: 0.10;
+    mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        black 55%,
+        black 70%,
+        transparent 100%
+    ) !important;
+
+    -webkit-mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        black 55%,
+        black 70%,
+        transparent 100%
+    );
+}
+
+
+
+.roster-container{
+    width:90%;
+    max-width:1300px;
+    margin: 0 auto;
+    
+   
+}
+
+.modal-container{
+    align-items: center;
+    
+}
+
+.roster-container p{
+    
+    color:#ff3b3b;
+    font-size: 18px;
+
+}
+
+.roster-container .date{
+    font-size: 0.9rem;
+    margin-left: 1rem;
+}
+
+.roster-container .description{
+
+  background: rgba(129, 1, 1, 0.2);
+  font-size: 0.8rem;
+  color: rgb(194, 193, 193);
+  backdrop-filter: blur(5px);
+  width: 300px;
+  margin-top: 10px;
+  margin-left: 1rem;
+  -webkit-backdrop-filter: blur(5px);
+  border: 2px solid rgba(255, 65, 65, 0.2);
+  border-radius: 5px;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 1px rgba(255, 255, 255, 0.15);
+}
+
+.roster-container  .roster-subtitle{
+    color:rgb(216, 216, 216);
+    text-transform:uppercase;
+    font-size: 2rem;
+    letter-spacing:2px;
+    margin-top: 10px;
+    font-weight:700;
+}
+
+.modal-description{
+    width: 500px;
+}
+
+
+.roster-grid{
+
+    display:grid;
+    margin-top: 60px;
+    gap: 30px;
+    grid-template-columns:repeat(3,1fr);
+    
+
+}
+
+.roster-info .roster-title{
+    font-size: 1.2rem;
+    color:rgb(216, 216, 216);
+    text-align: center;
+}
+
+
+.roster-card {
+    
+    width: 95%;
+    height: 110%;
+    background:#111827;
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid #20293c;
+    transition:.35s;
+    cursor: pointer !important;
+}
+
+.roster-card:hover{
+     scale: 1.01;
+}
+
+.view-btn-roster{
+
+    padding: 10px 20px;
+    margin: 0 auto;
+    border: none;
+    background-color: #ff3b3b;
+    border-radius: 36px;
+    color: #c7bfbf;
+    cursor: pointer;
+    transform: translate(105%, 50%);
+    transition: all .3s ease;
+    font-weight: bold;
+    
+}
+
+.view-btn-roster:hover{
+    background: #5f0000;
+    color: whitesmoke;
+    font-weight: bold;
+}
+
+
+.roster-info img{
+    width:100%;
+    height:230px;
+    object-fit:cover;
+    cursor: pointer !important;
+}
+
