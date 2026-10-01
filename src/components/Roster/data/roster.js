@@ -1,8 +1,7 @@
 import imageCard1 from '../data/jbrunson.jpg';
-import hero1 from '../data/jbrunson.jpg';
-import hero2 from '../data/pwet.jpg';
-import hero3 from '../data/jbrunson.jpg';
-
+import hero1 from '../data/Roster-img1.jpg';
+import hero2 from '../data/image3.jpg';
+import hero3 from '../data/image5.jpg';
 
 
 
@@ -23,7 +22,7 @@ const rosterData = [
          slides: [
               hero1,
               hero2,
-              hero3
+              hero3,
             ],
         
 
