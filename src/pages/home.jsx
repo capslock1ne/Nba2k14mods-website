@@ -1,7 +1,7 @@
 import React from "react";
 import { FiDownload } from "react-icons/fi";
 import { FiEye } from "react-icons/fi";
-import Advertisement from "../components/google-ads";
+import Advertisement from "../components/Google-Ads/google-ads";
 import Categories from "../components/mod-categories";
 import LatestUpload from "../components/latest-upload";
 
