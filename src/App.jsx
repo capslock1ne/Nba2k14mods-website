@@ -14,7 +14,7 @@ import Footer from "./components/footer";
 import TutorialsGuide from "./pages/TutorialPage/tutorials";
 import Community from "./pages/Community/community";
 import './main.css';
-
+import Download2K14 from "./components/DownloadNba2k14/download";
 
 
 
@@ -26,14 +26,14 @@ function App() {
           <Routes>
             
             <Route path="/" element={<Home />} />
-            <Route path="/Nba2k14" element={<Nba2k14 />} />
+            <Route path="/download" element={<Download2K14 />} />
             <Route path="/Tutorials" element={<TutorialsGuide />} />
             <Route path="/Roster" element={<Roster />} />
             <Route path="/Court" element={<Court />} />
             <Route path="/Jersey" element={<Jersey />} />
              <Route path="/Shoes" element={<Shoes />} />
             <Route path="/ScoreBoard" element={<ScoreBoard />} />
-            <Route path="/" element={<Categories />} />
+            <Route path="/categories" element={<Categories />} />
             <Route path="/Cyberface" element={<Cyberface />} />
             <Route path="/community" element={<Community/>} />
             <Route path="/about" element={<About />} />

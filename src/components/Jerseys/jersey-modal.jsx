@@ -2,12 +2,13 @@ import React from "react";
 import { useState } from "react";
 import JerseyData from "./data/jerseys";
 import '../Jerseys/jersey-modal.css';
-
+import { createPortal } from "react-dom";
 
    const modalJersey = ({closeModal}) => {
 
 
           const [currentSlide, setCurrentSlide] = useState(0);
+          const [fullscreenImage, setFullscreenImage] = useState(null);
 
                 const nextSlide = (slides) => {
                         setCurrentSlide((prev) =>
@@ -35,29 +36,50 @@ import '../Jerseys/jersey-modal.css';
 
                         <button className="close-btn"  onClick={closeModal} > ✕ </button>
 
-                        <div className="slider">
+                        
+                        <div className="slider-jersey">
 
-                        <button
-                            className="slide-btn prev"
-                            onClick={() => previousSlide(data.slides)}
-                        >
-                            ❮
-                        </button>
+                                {/* MAIN IMAGE */}
+                                <div
+                                    className="jersey-image-clickable"
+                                    onClick={() => {
+                                        setFullscreenImage(data.slides[currentSlide]);
+                                    }}
+                                >
+                                    <img
+                                        className="modal-image-jersey"
+                                        src={data.slides[currentSlide]}
+                                        alt={data.title}
+                                    />
+                                </div>
 
-                        <img
-                            className="modal-image"
-                            src={data.slides[currentSlide]}
-                            alt={data.title}
-                        />
 
-                        <button
-                            className="slide-btn next"
-                            onClick={() => nextSlide(data.slides)}
-                        >
-                            ❯
-                        </button>
+                                {/* PREVIOUS BUTTON */}
+                                <button
+                                    type="button"
+                                    className="slide-btn prev"
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        previousSlide(data.slides);
+                                    }}
+                                >
+                                    ❮
+                                </button>
 
-                    </div>
+
+                                {/* NEXT BUTTON */}
+                                <button
+                                    type="button"
+                                    className="slide-btn next"
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        nextSlide(data.slides);
+                                    }}
+                                >
+                                    ❯
+                                </button>
+
+                            </div>
 
                     {/* SLIDE INDICATORS */}
                     <div className="slide-indicators">
@@ -117,7 +139,33 @@ import '../Jerseys/jersey-modal.css';
                                         
 
                                 </div>
-                                    ))}    
+                                    ))}   
+                                    
+                                    {fullscreenImage &&
+                                        createPortal(
+                                            <div
+                                                className="fullscreen-jersey"
+                                                onClick={() => setFullscreenImage(null)}
+                                            >
+                
+                                                <button
+                                                    className="fullscreen-close"
+                                                    onClick={() => setFullscreenImage(null)}
+                                                >
+                                                    ✕
+                                                </button>
+                
+                                                <img
+                                                    src={fullscreenImage}
+                                                    alt="Full size court"
+                                                    className="fullscreen-jersey-image"
+                                                    onClick={(event) => event.stopPropagation()}
+                                                />
+                
+                                            </div>,
+                                        document.body
+                                        )
+                                    }   
 
                             </div>
                         

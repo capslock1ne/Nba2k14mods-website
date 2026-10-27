@@ -6,7 +6,8 @@ import "../Shoes/data/Shoes-modal.css";
 const modalShoes = ({ closeModal }) => {
 
     const [currentSlide, setCurrentSlide] = useState(0);
-
+    const [fullscreenImage, setFullscreenImage] = useState(null);
+    
     const nextSlide = (slides) => {
         setCurrentSlide((prev) =>
             prev === slides.length - 1 ? 0 : prev + 1
@@ -42,30 +43,49 @@ const modalShoes = ({ closeModal }) => {
                     </button>
 
 
-                    {/* SLIDER */}
-                    <div className="slider">
+                      <div className="slider">
 
-                        <button
-                            className="slide-btn prev"
-                            onClick={() => previousSlide(data.slides)}
-                        >
-                            ❮
-                        </button>
+                                {/* MAIN IMAGE */}
+                                <div
+                                    className="shoes-image-clickable"
+                                    onClick={() => {
+                                        setFullscreenImage(data.slides[currentSlide]);
+                                    }}
+                                >
+                                    <img
+                                        className="modal-image-shoes"
+                                        src={data.slides[currentSlide]}
+                                        alt={data.title}
+                                    />
+                                </div>
 
-                        <img
-                            className="modal-image"
-                            src={data.slides[currentSlide]}
-                            alt={data.title}
-                        />
 
-                        <button
-                            className="slide-btn next"
-                            onClick={() => nextSlide(data.slides)}
-                        >
-                            ❯
-                        </button>
+                                {/* PREVIOUS BUTTON */}
+                                <button
+                                    type="button"
+                                    className="slide-btn prev"
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        previousSlide(data.slides);
+                                    }}
+                                >
+                                    ❮
+                                </button>
 
-                    </div>
+
+                                {/* NEXT BUTTON */}
+                                <button
+                                    type="button"
+                                    className="slide-btn next"
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        nextSlide(data.slides);
+                                    }}
+                                >
+                                    ❯
+                                </button>
+
+                            </div>
 
 
                     {/* SLIDE INDICATORS */}
@@ -158,6 +178,32 @@ const modalShoes = ({ closeModal }) => {
                 </div>
 
             ))}
+
+                {fullscreenImage &&
+                        createPortal(
+                            <div
+                                className="fullscreen-shoes"
+                                onClick={() => setFullscreenImage(null)}
+                            >
+
+                                <button
+                                    className="fullscreen-close"
+                                    onClick={() => setFullscreenImage(null)}
+                                >
+                                    ✕
+                                </button>
+
+                                <img
+                                    src={fullscreenImage}
+                                    alt="Full size court"
+                                    className="fullscreen-shoes-image"
+                                    onClick={(event) => event.stopPropagation()}
+                                />
+
+                            </div>,
+                            document.body
+                        )
+                    }
 
         </div>,
 

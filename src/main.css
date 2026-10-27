@@ -33,9 +33,9 @@
     inset: 0;
 
     background:
-        linear-gradient(
-            rgba(8, 30, 18, 0.72),
-            rgba(8, 30, 18, 0.72)
+         linear-gradient(
+            rgba(15, 24, 23, 0.90),
+            rgba(15, 19, 20, 0.90)
         ),
         url('../src/assets/images/sga4.png')
         center/cover no-repeat;
@@ -97,39 +97,41 @@
     }
 
 
-    .center-buttons button {
+    .center-buttons a{
         padding: 10px 30px;
         font-size: 16px;
         gap: 20px;
         border: none;
         font-weight: bold;
-        color: rgb(219, 219, 219);
+        color: rgb(211, 211, 211);
         border-radius: 5px;
         cursor: pointer;
+        text-decoration: none;
         transition: background-color 0.3s ease;
     }
 
 
-    .center-buttons .download-btn{
-        background-color: #e21d1d;
+    .center-buttons .browse-btn{
+        background-color: #7a0505;
         padding: 15px 35px;
         
 
     }
 
-     .center-buttons .download-btn:hover{
-        background-color: #990404;
+     .center-buttons .browse-btn:hover{
+        background-color: #bb0404;
      }
 
-    .center-buttons .browse-btn{
+    .center-buttons .community-btn{
         background-color: transparent;
         border: 2px solid #e21d1d;
-        padding: 15px 40px;
+        padding: 13px 30px;
+        cursor: pointer;
         transition: background-color 0.3s ease;
         color: #ececec;
     }
 
-    .center-buttons .browse-btn:hover{
+    .center-buttons .community-btn:hover{
         background-color: #630000;
         color: #f1e4e4;
         transition: background-color 0.3s ease;
@@ -139,4 +141,5 @@
         position: relative;
         top: 2px;
         font-weight: bold;
+        margin-right: 5px;
     }

@@ -1,9 +1,11 @@
 import imageCard1 from '../data/jbrunson.jpg';
-import hero1 from '../data/Roster-img1.jpg';
+import hero1 from '../data/Roster-img1final.jpg';
 import hero2 from '../data/image3.jpg';
 import hero3 from '../data/image5.jpg';
-
-
+import hero4 from '../data/image6.png';
+import hero5 from '../data/image7.png';
+import hero6 from '../data/image8.png';
+import hero7 from '../data/image9.png';
 
 
 const rosterData = [
@@ -23,6 +25,11 @@ const rosterData = [
               hero1,
               hero2,
               hero3,
+              hero4,
+              hero5,
+              hero6,
+              hero7,
+              
             ],
         
 

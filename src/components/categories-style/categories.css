@@ -8,19 +8,38 @@
      }
 
 
+html {
+  scroll-behavior: smooth;
+}
 
+#categories {
+  scroll-margin-top: 90px;
+}
 
 .categories{
     width:100%;
     background:#0b0f19;
-    padding: 80px 0;
+    padding: 50px 0;
+    height: 50vh;
+    
+
 }
 
 .categories-content{
     max-width:1300px;
     margin:auto;
     padding:0 40px;
+    margin-top: -200px;
+   
 }
+
+.category-card,
+.category-card:hover,
+.category-card:visited,
+.category-card:active {
+  text-decoration: none;
+}
+
 
 .section-subtitle {
   color: #ff3b3b;

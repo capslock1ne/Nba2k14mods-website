@@ -4,14 +4,16 @@ import { useState, useEffect } from "react";
 
 import {tutorials} from '../TutorialPage/data/tutorial';	
 import '../TutorialPage/modal-style/modal.css';
-	
+import { createPortal } from "react-dom";
 
 
    const ViewModal = ({closeModal}) => {
 
 
 			const [currentSlide, setCurrentSlide] = useState(0);
-			
+			const [fullscreenImage, setFullscreenImage] = useState(null);
+
+
 							const nextSlide = (slides) => {
 									setCurrentSlide((prev) =>
 									prev === slides.length - 1 ? 0 : prev + 1
@@ -31,40 +33,63 @@ import '../TutorialPage/modal-style/modal.css';
                     
          <div className="tutorial-modal">
 
+                <>
+                
+                </>
 
                  {tutorials.map((data, index) => (
                       <div className="tutorial-modal-container" key={index}>
 
                         <button className="close-btn"  onClick={closeModal} > ✕ </button>
 
-                        <div className="slider">
+                        <div className="slider-tutorial">
 
-                           
+                                {/* MAIN IMAGE */}
+                                <div
+                                    className="tutorial-image-clickable"
+                                    onClick={() => {
+                                        setFullscreenImage(data.slides[currentSlide]);
+                                    }}
+                                >
+                                    <img
+                                        className="modal-image-tutorial"
+                                        src={data.slides[currentSlide]}
+                                        alt={data.title}
+                                    />
+                                </div>
 
-                        <button
-                            className="slide-btn prev"
-                            onClick={() => previousSlide(data.slides)}
-                        >
-                            ❮
-                        </button>
 
-                        <img
-                            className="modal-image"
-                            src={data.slides[currentSlide]}
-                            alt={data.title}
-                        />
+                                {/* PREVIOUS BUTTON */}
+                                <button
+                                    type="button"
+                                    className="slide-btn prev"
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        previousSlide(data.slides);
+                                    }}
+                            
+                                >
+                                    ❮
+                                </button>
 
-                        <button
-                            className="slide-btn next"
-                            onClick={() => nextSlide(data.slides)}
-                        >
-                            ❯
-                        </button>
 
-                    </div>
+                                {/* NEXT BUTTON */}
+                                <button
+                                    type="button"
+                                    className="slide-btn next"
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        nextSlide(data.slides);
+                                    }}
+                                >
+                                    ❯
+                                </button>
+
+                            </div>
 
                     {/* SLIDE INDICATORS */}
                     <div className="slide-indicators">
+                        
 
                         {data.slides.map((_, index) => (
 
@@ -118,9 +143,40 @@ import '../TutorialPage/modal-style/modal.css';
                                            
 
                                 </div>
+
+                                
+                                
                                     ))}    
+                                    
+                                   
+                                     {fullscreenImage &&
+                                        createPortal(
+                                            <div
+                                                className="fullscreen-tutorial"
+                                                onClick={() => setFullscreenImage(null)}
+                                            >
+                
+                                                <button
+                                                    className="fullscreen-close"
+                                                    onClick={() => setFullscreenImage(null)}
+                                                >
+                                                    ✕
+                                                </button>
+                
+                                                <img
+                                                    src={fullscreenImage}
+                                                    alt="Full size court"
+                                                    className="fullscreen-tutorial-image"
+                                                    onClick={(event) => event.stopPropagation()}
+                                                />
+                
+                                            </div>,
+                                        document.body
+                                        )
+                                    }
 
                             </div>
+                            
                         
                         
                         </>

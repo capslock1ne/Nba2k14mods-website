@@ -4,6 +4,8 @@ import { FiEye } from "react-icons/fi";
 import Advertisement from "../components/Google-Ads/google-ads";
 import Categories from "../components/mod-categories";
 import LatestUpload from "../components/latest-upload";
+import Download2K14 from "../components/DownloadNba2k14/download";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
@@ -22,16 +24,28 @@ const Home = () => {
                   </p>
 
                   <div className="center-buttons">
-                    <button className="download-btn"><FiEye className="btn-icon" /> Browse Mod</button>
-                    <button className="browse-btn"> <FiDownload  className="btn-icon"/> Join Commnuity </button>
+                  
+                      <a href="#categories" className="browse-btn">
+                            <FiEye className="btn-icon" />
+                            Browse Mod
+                          </a>
+
+                      <a href="/community"  className="community-btn">
+                       <FiDownload  className="btn-icon"/> Join Community 
+                      </a>
+                  
+
                   </div>
 
                 </div>
             </section>
+ 
+                  
+                  <Download2K14 />
               
                   <Advertisement />
 
-                  <Categories />
+                  <Categories  />
 
                   <LatestUpload />
                   </>

@@ -2,12 +2,14 @@ import React from "react";
 import rosterData from './data/roster';
 import { useState } from "react";
 import './roster-style/roster-modal.css';
-
+import { createPortal } from "react-dom";
 
    const modalRoster = ({closeModal}) => {
 
 
           const [currentSlide, setCurrentSlide] = useState(0);
+          const [fullscreenImage, setFullscreenImage] = useState(null);
+
 
                 const nextSlide = (slides) => {
                         setCurrentSlide((prev) =>
@@ -35,29 +37,49 @@ import './roster-style/roster-modal.css';
 
                         <button className="close-btn"  onClick={closeModal} > ✕ </button>
 
-                        <div className="slider">
+                        <div className="slider-roster">
 
-                        <button
-                            className="slide-btn prev"
-                            onClick={() => previousSlide(data.slides)}
-                        >
-                            ❮
-                        </button>
+                                {/* MAIN IMAGE */}
+                                <div
+                                    className="roster-image-clickable"
+                                    onClick={() => {
+                                        setFullscreenImage(data.slides[currentSlide]);
+                                    }}
+                                >
+                                    <img
+                                        className="modal-image-roster"
+                                        src={data.slides[currentSlide]}
+                                        alt={data.title}
+                                    />
+                                </div>
 
-                        <img
-                            className="modal-image"
-                            src={data.slides[currentSlide]}
-                            alt={data.title}
-                        />
 
-                        <button
-                            className="slide-btn next"
-                            onClick={() => nextSlide(data.slides)}
-                        >
-                            ❯
-                        </button>
+                                {/* PREVIOUS BUTTON */}
+                                <button
+                                    type="button"
+                                    className="slide-btn prev"
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        previousSlide(data.slides);
+                                    }}
+                                >
+                                    ❮
+                                </button>
 
-                    </div>
+
+                                {/* NEXT BUTTON */}
+                                <button
+                                    type="button"
+                                    className="slide-btn next"
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        nextSlide(data.slides);
+                                    }}
+                                >
+                                    ❯
+                                </button>
+
+                            </div>
 
                     {/* SLIDE INDICATORS */}
                     <div className="slide-indicators">
@@ -114,10 +136,40 @@ import './roster-style/roster-modal.css';
 
                                         </div>
 
+                                         
+                                            
+
                                         
 
                                 </div>
+                                 
                                     ))}    
+
+                                      {fullscreenImage &&
+                                                createPortal(
+                                                    <div
+                                                        className="fullscreen-roster"
+                                                        onClick={() => setFullscreenImage(null)}
+                                                    >
+                        
+                                                        <button
+                                                            className="fullscreen-close"
+                                                            onClick={() => setFullscreenImage(null)}
+                                                        >
+                                                            ✕
+                                                        </button>
+                        
+                                                        <img
+                                                            src={fullscreenImage}
+                                                            alt="Full size court"
+                                                            className="fullscreen-roster-image"
+                                                            onClick={(event) => event.stopPropagation()}
+                                                        />
+                        
+                                                    </div>,
+                                                document.body
+                                                )
+                                            }
 
                             </div>
                         

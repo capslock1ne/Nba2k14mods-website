@@ -14,7 +14,7 @@
   import { Link } from "react-router-dom";
 
   import './categories-style/categories.css';
-
+ 
   const categories = [
     {
       icon: <FiUsers />, 
@@ -77,7 +77,7 @@
 
 
     return (
-      <section className="categories">
+      <section className="categories"   id="categories">
 
     <div className="categories-content">
 

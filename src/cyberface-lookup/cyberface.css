@@ -16,6 +16,7 @@
      background-repeat: no-repeat;
      justify-content: center;
      font-family: "Segoe UI", sans-serif;
+       
      
 }
 
@@ -24,15 +25,19 @@
     content: "";
     position: absolute;
     inset: 0;
-
     background:
-        linear-gradient(
-            rgba(8, 30, 18, 0.72),
-            rgba(8, 30, 18, 0.72)
+       linear-gradient(
+            rgba(15, 24, 23, 0.90),
+            rgba(15, 19, 20, 0.90)
         ),
         url('../assets/images/steph.png')
-        center/cover no-repeat;   
+        center/cover no-repeat !important;  
+        
         z-index: 0;
+        height: 120vh !important; 
+        
+        
+  
     
 }
 
@@ -44,6 +49,7 @@
   background:transparent;
   box-sizing: border-box;
   position: relative;
+ 
 }
 
 
@@ -67,11 +73,12 @@
 
 
 
-.divider {
-  width: 1020px !important;
-  height: 4px;
+.cyberface-container .divider {
+  width: 1100px !important;
+  height: 1px;
+  margin-left: -30px;
   border: none;
-  background: #222;
+  background: #e0e0e0;
 }
 
 
@@ -132,71 +139,67 @@
 
 /* DATABASE */
 
-.database {
-  width: 100%;
-
+.cyberface-table-container {
+  max-height: 500px;
+  overflow-y: auto;
   overflow-x: auto;
+
 }
 
+.cyberface-table{
+  text-align: center;
+  margin: 0 auto;
+}
 
 /* TABLE */
 
-.database table {
+.cyberface-table-container table {
   width: 100%;
-
   border-collapse: collapse;
-
-  background:#dddddd;
+  background:#131313;
 }
 
 
 /* TABLE HEADER */
 
-.database th {
-  padding: 34px 12px;
-
+.cyberface-table-container thead th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  padding: 1.5rem 2rem;
   background:#0b0f19;
-
   color: #ffffff;
-
   text-align: center;
 
   font-size: 14px;
 
   font-weight: 600;
-
   letter-spacing: 0.5px;
 }
 
 
 /* TABLE CELLS */
 
-.database td {
+.cyberface-table-container tbody td {
   padding: 13px 12px;
-
   border-bottom: 1px solid #dddddd;
-
-  color: #222;
-
+  color: #cfcfcf;
+  background:#202020;
+  font-weight: 500;
   font-size: 15px;
 }
 
 
 
-.database tbody tr:nth-child(even) {
+.cyberface-table-container tbody tr:nth-child(even) {
   background: #f7f7f7;
 }
 
 
 
 
-.database tbody tr:hover {
-  background: #eeeeee;
 
-  transition: 0.2s ease;
-}
-
-.database tbody tr{
+.cyberface-table-container tbody tr{
     text-align: center;
 }
 
@@ -204,9 +207,7 @@
 
 .cyberface-id {
   font-weight: 600;
-
   font-family: monospace;
-
   color: #333;
 }
 
@@ -214,12 +215,37 @@
 
 .no-results {
   padding: 20px;
-
   text-align: center;
-
   background: #ffffff;
-
   color: #777;
-
   font-size: 15px;
+}
+
+
+
+.alphabet-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 35px 36px 20px;
+}
+
+.alphabet-filter button {
+  min-width: 34px;
+  height: 29px;
+  padding: 0 10px;
+  border: 1px solid #e5e7eb;
+  border-radius: 5px;
+  background: transparent;
+  color: #fff;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.alphabet-filter button:hover,
+.alphabet-filter button.active {
+  background: #ff3b3b;
+  border-color: #ff3b3b;
+  color: #fff;
 }

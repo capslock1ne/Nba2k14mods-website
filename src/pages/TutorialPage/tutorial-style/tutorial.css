@@ -17,6 +17,8 @@
     
 }
 
+
+
 .tutorial-container{
     width:90%;
     max-width:1300px;
@@ -36,6 +38,7 @@
   background: #1f2937;
   width: 1500px;
   margin: 20px 0;
+  z-index: 1;
 }
 
 .tutorial-subtitle{
@@ -73,7 +76,7 @@
     transition:.35s;
     overflow: hidden;
     cursor: pointer;
-    
+    z-index: 1;
 
 }
 
