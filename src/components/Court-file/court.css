@@ -21,7 +21,7 @@
     content: "";
     position: absolute;
     inset: 0;
-    background-image: url('./images/dunk.png');
+    background-image: url('./images/background-court.avif');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -84,10 +84,10 @@
 .court-card{
     width: 95%;
     height: 110%;
-    background:#111827;
+    background:#131313;
     border-radius:15px;
     overflow:hidden;
-    border:1px solid #20293c;
+    border:1px solid #2a2e36;
     transition:.35s;
     cursor: pointer;
 }

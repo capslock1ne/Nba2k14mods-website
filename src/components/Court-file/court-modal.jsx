@@ -1,31 +1,27 @@
+
 import React, { useEffect, useState } from "react";
-import courtData from "./data/court";
 import { createPortal } from "react-dom";
 import "../Court-file/court-modal.css";
 
-const modalCourt = ({ closeModal }) => {
-
+const Courtmodal = ({ court, closeModal }) => {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [fullscreenImage, setFullscreenImage] = useState(null);
 
-    const nextSlide = (slides) => {
-        setCurrentSlide((prev) =>
-            prev === slides.length - 1 ? 0 : prev + 1
-        );
-    };
-
-    const previousSlide = (slides) => {
-        setCurrentSlide((prev) =>
-            prev === 0 ? slides.length - 1 : prev - 1
-        );
-    };
-
     
     useEffect(() => {
+        setCurrentSlide(0);
+        setFullscreenImage(null);
+    }, [court]);
 
+   
+    useEffect(() => {
         const handleKeyDown = (event) => {
             if (event.key === "Escape") {
-                setFullscreenImage(null);
+                if (fullscreenImage) {
+                    setFullscreenImage(null);
+                } else {
+                    closeModal();
+                }
             }
         };
 
@@ -34,214 +30,216 @@ const modalCourt = ({ closeModal }) => {
         return () => {
             document.removeEventListener("keydown", handleKeyDown);
         };
+    }, [fullscreenImage, closeModal]);
 
-    }, []);
+    if (!court) {
+        return null;
+    }
 
+      const slides = court.slides || [];
+
+      
+    const nextSlide = () => {
+        if (slides.length === 0) return;
+
+        setCurrentSlide((prev) =>
+            prev === slides.length - 1 ? 0 : prev + 1
+        );
+    };
+
+    const previousSlide = () => {
+        if (slides.length === 0) return;
+
+        setCurrentSlide((prev) =>
+            prev === 0 ? slides.length - 1 : prev - 1
+        );
+    };
 
     return createPortal(
-
         <div className="court-modal">
-
             {/* Background */}
             <div
                 className="modal-backdrop"
                 onClick={closeModal}
-            ></div>
+            />
 
-
-            {courtData.map((data, index) => (
-
-                <div
-                    className="modal-container-court"
-                    key={index}
+            {/* ONLY THE SELECTED COURT */}
+            <div className="modal-container-court">
+                <button
+                    type="button"
+                    className="close-btn"
+                    onClick={closeModal}
+                    aria-label="Close modal"
                 >
+                    ✕
+                </button>
 
-                    <button
-                        className="close-btn"
-                        onClick={closeModal}
-                    >
-                        ✕
-                    </button>
+                {/* IMAGE SLIDER */}
+                {slides.length > 0 && (
+                    <>
+                        <div className="slider">
+                            {/* Main image */}
+                            <div
+                                className="court-image-clickable"
+                                onClick={() =>
+                                    setFullscreenImage(slides[currentSlide])
+                                }
+                            >
+                                <img
+                                    className="modal-image-court"
+                                    src={slides[currentSlide]}
+                                    alt={`${court.title} court ${currentSlide + 1}`}
+                                />
+                            </div>
 
-
-                    <div className="slider">
-
-                                {/* MAIN IMAGE */}
-                                <div
-                                    className="court-image-clickable"
-                                    onClick={() => {
-                                        setFullscreenImage(data.slides[currentSlide]);
-                                    }}
-                                >
-                                    <img
-                                        className="modal-image-court"
-                                        src={data.slides[currentSlide]}
-                                        alt={data.title}
-                                    />
-                                </div>
-
-
-                                {/* PREVIOUS BUTTON */}
+                            {/* Previous button */}
+                            {slides.length > 1 && (
                                 <button
                                     type="button"
                                     className="slide-btn prev"
-                                    onClick={(e) => {
-                                        e.stopPropagation();
-                                        previousSlide(data.slides);
+                                    onClick={(event) => {
+                                        event.stopPropagation();
+                                        previousSlide();
                                     }}
+                                    aria-label="Previous image"
                                 >
                                     ❮
                                 </button>
+                            )}
 
-
-                                {/* NEXT BUTTON */}
+                            {/* Next button */}
+                            {slides.length > 1 && (
                                 <button
                                     type="button"
                                     className="slide-btn next"
-                                    onClick={(e) => {
-                                        e.stopPropagation();
-                                        nextSlide(data.slides);
+                                    onClick={(event) => {
+                                        event.stopPropagation();
+                                        nextSlide();
                                     }}
+                                    aria-label="Next image"
                                 >
                                     ❯
                                 </button>
+                            )}
+                        </div>
 
-                            </div>
-                      
+                        {/* IMAGE INDICATORS */}
+                        <div className="slide-indicators-court">
+                            {slides.map((_, index) => (
+                                <button
+                                    type="button"
+                                    key={index}
+                                    className={
+                                        currentSlide === index
+                                            ? "indicator active"
+                                            : "indicator"
+                                    }
+                                    onClick={() => setCurrentSlide(index)}
+                                    aria-label={`Go to image ${index + 1}`}
+                                />
+                            ))}
+                        </div>
+                    </>
+                )}
 
-                     
+                {/* COURT INFORMATION */}
+                <div className="court-modal-info">
+                    <h2 className="court-modal-title">
+                        {court.title}
+                    </h2>
 
+                    <hr className="court-modal-divider" />
 
-                    {/* IMAGE INDICATORS */}
-                    <div className="slide-indicators-court">
+                    <h4 className="description">
+                        Description
+                    </h4>
 
-                        {data.slides.map((_, index) => (
+                    <p className="court-modal-description">
+                        {court.description}
+                    </p>
 
-                            <button
-                                key={index}
-                                className={
-                                    currentSlide === index
-                                        ? "indicator active"
-                                        : "indicator"
-                                }
-                                onClick={() =>
-                                    setCurrentSlide(index)
-                                }
-                            />
+                    <h4 className="installation">
+                        Installation Guide:
+                    </h4>
 
-                        ))}
+                    <ul className="court-installation-list">
+                        <li>
+                            Join Discord community to get the files.
+                        </li>
 
-                    </div>
+                        <li>
+                            Back up your original game files before installing.
+                        </li>
 
+                        <li>
+                            Extract the download into your NBA 2K14 mod folder.
+                        </li>
 
-                    {/* COURT INFORMATION */}
-                    <div className="court-modal-info">
+                        <li>
+                            Overwrite files when prompted and launch the game.
+                        </li>
+                    </ul>
 
-                        <h2 className="court-modal-title">
-                            {data.title}
-                        </h2>
-
-                        <hr className="court-modal-divider" />
-
-                        <h4 className="description">
-                            Description
-                        </h4>
-
-                        <p className="court-modal-description">
-                            {data.description}
-                        </p>
-
-
-                        <h4 className="installation">
-                            Installation Guide:
-                        </h4>
-
-                        <ul className="court-installation-list">
-
-                            <li>
-                                Join Discord community to get the files
-                            </li>
-
-                            <li>
-                                Back up your original game files before installing
-                            </li>
-
-                            <li>
-                                Extract the download into your NBA 2K14 mod folder.
-                            </li>
-
-                            <li>
-                                Overwrite files when prompted and launch the game.
-                            </li>
-
-                        </ul>
-
-
-                        <a
-                            href={data.youtube}
-                            target="_blank"
-                            rel="noopener noreferrer"
+                    <a
+                        href={court.youtube}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <button
+                            type="button"
+                            className="court-watch-btn"
                         >
-                            <button className="court-watch-btn">
-                                Get files
-                            </button>
-                        </a>
-
-                    </div>
-
-
-                    {/* CREDITS */}
-                    <div className="court-button-credits">
-
-                        <p>Credits to:</p>
-
-                        <button>
-                            {data.credits}
+                            Get files
                         </button>
-
-                        <button>
-                            {data.creditsTwo}
-                        </button>
-
-                    </div>
-
+                    </a>
                 </div>
 
-            ))}
+                {/* CREDITS */}
+                <div className="court-button-credits">
+                    <p>Credits to:</p>
 
+                    {court.credits && (
+                        <button type="button">
+                            {court.credits}
+                        </button>
+                    )}
 
-            
+                    {court.creditsTwo && (
+                        <button type="button">
+                            {court.creditsTwo}
+                        </button>
+                    )}
+                </div>
+            </div>
 
-                    {fullscreenImage &&
-                        createPortal(
-                            <div
-                                className="fullscreen-court"
-                                onClick={() => setFullscreenImage(null)}
-                            >
+            {/* FULLSCREEN IMAGE */}
+            {fullscreenImage &&
+                createPortal(
+                    <div
+                        className="fullscreen-court"
+                        onClick={() => setFullscreenImage(null)}
+                    >
+                        <button
+                            type="button"
+                            className="fullscreen-close"
+                            onClick={() => setFullscreenImage(null)}
+                            aria-label="Close fullscreen image"
+                        >
+                            ✕
+                        </button>
 
-                                <button
-                                    className="fullscreen-close"
-                                    onClick={() => setFullscreenImage(null)}
-                                >
-                                    ✕
-                                </button>
-
-                                <img
-                                    src={fullscreenImage}
-                                    alt="Full size court"
-                                    className="fullscreen-court-image"
-                                    onClick={(event) => event.stopPropagation()}
-                                />
-
-                            </div>,
-                            document.body
-                        )
-                    }
-                            </div>,
-
-               document.body
-
+                        <img
+                            src={fullscreenImage}
+                            alt={`${court.title} fullscreen`}
+                            className="fullscreen-court-image"
+                            onClick={(event) => event.stopPropagation()}
+                        />
+                    </div>,
+                    document.body
+                )}
+        </div>,
+        document.body
     );
 };
 
-export default modalCourt;
+export default Courtmodal;

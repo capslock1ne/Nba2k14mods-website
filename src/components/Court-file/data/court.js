@@ -37,10 +37,64 @@ const CourtData = [
     
      {
          id: 1,
-         title: "Main Court",
+         title: "Core Court",
          image: imgCard1,
          titleTwo: "Main Court Package",
-         description: "Complete package: Exhibition Roster + MyCAREER Roster + Association Roster + Draft Classes - all in one download.",
+         description: "Core court package for NBA 2K14, featuring all the main courts of the NBA teams.",
+         date: "July 2026",
+         credits: "Kamatis2K",
+         creditsTwo: "Mackubex",
+         author: "Lockcaps",
+         slides: [
+             
+             hero1,
+             hero2,
+             hero3,
+             hero4,
+             hero5,
+             hero6,
+             hero7,
+             hero8,
+            hero9,
+            hero10,
+            hero11, 
+            hero12,
+            hero13,
+            hero14,
+            hero15,
+            hero16,
+            hero17,
+            hero18,
+            hero19,
+            hero20,
+            hero21,
+            hero22,
+            hero23,
+            hero24,
+            hero25,
+            hero26,
+            hero27,
+            hero28,
+            hero29,
+            hero30,
+           
+            
+        
+         ]
+
+
+     
+
+
+
+      },
+
+      {
+         id: 2,
+         title: "NBA City Court 2025",
+         image: imgCard1,
+         titleTwo: "City Court Package",
+         description: "City court package for NBA 2K14, featuring all the main courts of the NBA teams.",
          date: "July 2026",
          credits: "Kamatis2K",
          creditsTwo: "Mackubex",

@@ -9,7 +9,7 @@ import RosterModal from './roster-modal';
 const Roster = () => {
 
  
-       const [showModal, setShowModal] = useState(false);
+       const [selectedRoster, setSelectedRoster] = useState(null);
        
           return  (
 
@@ -43,7 +43,7 @@ const Roster = () => {
 
                                         <button
                                             className="view-btn-roster"
-                                            onClick={() => setShowModal(true)}
+                                            onClick={() => setSelectedRoster(data)}
                                         >
                                             View Details
                                         </button>
@@ -58,9 +58,10 @@ const Roster = () => {
            
                            </div>
 
-                          {showModal && (
+                          {selectedRoster && (
                                 <RosterModal
-                                 closeModal={() => setShowModal(false)}
+                                   roster={selectedRoster}
+                                 closeModal={() => setSelectedRoster(null)}
                                 
                                 />
 

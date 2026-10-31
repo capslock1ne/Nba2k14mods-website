@@ -228,6 +228,7 @@
     color: rgb(206, 203, 203);
     font-size: 20px;
     margin-bottom: 2px;
+    margin-left: 10px;
 
 }
 
@@ -236,7 +237,7 @@
     color: #ff3b3b;
     font-size: 15px;
     margin-top: 22px;
-
+    margin-left: 10px;
     margin-bottom: 8px;
 
 }
@@ -259,20 +260,37 @@
 
     color: #cbd5e1;
     font-size: 15px;
+    margin-left: 10px;
     line-height: 1.7;
 
 }
 
-
-
-
-.divider {
-    border: none;
-    border-top: 1px solid #263044;
-    margin-bottom: 25px;
-
+.modal-info .installation {
+    color:#ff3b3b;
+    font-size:  18px;
+    margin-top: 20px;
 }
 
+.roster-installation-list{
+    margin-top: 20px;
+}
+
+.roster-installation-list li{
+    color: #fff;
+    font-size: 0.9rem;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+
+
+.modal-divider{
+    border: none;
+    height: 1px;
+    background: #1f2937;
+    width: 700px;
+    margin-top: -10px;
+}
 
 
 
@@ -303,11 +321,12 @@
 }
 
 .button-credits{
-    display: flex;
-    position: relative;
-    margin-right: 60%;
-    margin-top: -10rem !important;
-    gap: 10px;
+     display: flex;
+     align-items: center !important;
+     justify-content: center !important;
+     text-align: center;
+     margin-top: -420px !important;
+     gap: 10px;
 }
 
 .button-credits p{

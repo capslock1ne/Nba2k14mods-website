@@ -124,17 +124,13 @@
     
     width: 95%;
     height: 110%;
-    background:#111827;
+     background:#131313;
     border-radius: 15px;
-    overflow: hidden;
-    border: 1px solid #20293c;
-    transition:.35s;
+    border:1px solid #2a2e36;
     cursor: pointer !important;
 }
 
-.roster-card:hover{
-     scale: 1.01;
-}
+
 
 .view-btn-roster{
 
