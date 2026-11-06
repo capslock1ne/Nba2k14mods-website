@@ -8,26 +8,38 @@ const Court = () => {
     const [selectedCourt, setSelectedCourt] = useState(null);
 
     return (
-        <div className="court">
+        <main className="court">
             <div className="court-container">
-                <p>Updated All team courts</p>
 
-                <h2 className="court-subtitle">COURTS</h2>
+                <header className="court-header">
+                    <p className="court-eyebrow">
+                        Updated All Team Courts
+                    </p>
 
-                <hr className="divider" />
+                    <h2 className="court-subtitle">
+                        COURTS
+                    </h2>
+
+                    <hr className="divider" />
+                </header>
 
                 <div className="court-grid">
                     {courtData.map((data) => (
-                        <div className="court-card" key={data.id}>
+                        <article className="court-card" key={data.id}>
+
                             <div className="court-info">
+
                                 <h2 className="court-title">
                                     {data.titleTwo}
                                 </h2>
 
-                                <img
-                                    src={data.image}
-                                    alt={data.title}
-                                />
+                                <div className="court-image-wrapper">
+                                    <img
+                                        src={data.image}
+                                        alt={data.title || data.titleTwo}
+                                        loading="lazy"
+                                    />
+                                </div>
 
                                 <p className="date">
                                     Date: {data.date}
@@ -36,16 +48,32 @@ const Court = () => {
                                 <p className="description-court">
                                     {data.description}
                                 </p>
+
                             </div>
 
-                            <button
-                                type="button"
-                                className="view-btn-court"
-                                onClick={() => setSelectedCourt(data)}
-                            >
-                                View Details
-                            </button>
-                        </div>
+                            
+                                <div className="court-card-footer">
+
+                                    <button
+                                        type="button"
+                                        className="court-download-btn"
+                                        onClick={() => window.open(data.downloadUrl, "_blank", "noopener,noreferrer")}
+                                        disabled={!data.downloadUrl}
+                                    >
+                                        Download
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        className="view-btn-court"
+                                        onClick={() => setSelectedCourt(data)}
+                                    >
+                                        View Details
+                                    </button>
+
+                                </div>
+
+                        </article>
                     ))}
                 </div>
 
@@ -55,8 +83,9 @@ const Court = () => {
                         closeModal={() => setSelectedCourt(null)}
                     />
                 )}
+
             </div>
-        </div>
+        </main>
     );
 };
 

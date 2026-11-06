@@ -1,53 +1,57 @@
+
 import React from "react";
-import '../DownloadNba2k14/assets/download.css';
+import "../DownloadNba2k14/assets/download.css";
+
 import arrowLeft from "../DownloadNba2k14/assets/arrowLeft.png";
 import arrowRight from "../DownloadNba2k14/assets/arrowRight.png";
+import downloadIcon from "./assets/downloadIcon.png";
 
+const Download = () => {
+    return (
+        <section className="download-nba-2k14">
 
+            {/* RIGHT ARROW */}
+            <div className="side-arrow right-arrow" aria-hidden="true">
+                <img src={arrowRight} alt="" />
+            </div>
 
-const download = () => {
+            {/* MAIN CONTAINER */}
+            <div className="container">
 
-         return (
+                <img
+                    src={downloadIcon}
+                    alt="Download icon"
+                    className="download-Icon"
+                />
 
-               <div className="download-nba-2k14">
+                <div className="content">
 
-                 {/* RIGHT ARROW */}
-                        <div className="side-arrow right-arrow">
-                             <img src={arrowRight} alt="arrow-right" />
-                        </div>
+                    <p className="get-started">Get started</p>
 
-                 
+                    <h2>DOWNLOAD NBA 2K14</h2>
 
-                   <div className="container">
+                    <p className="description">
+                        Don’t have NBA 2K14 installed yet? Download the
+                        base game first before installing any 2K mods or
+                        other community mods. A clean NBA 2K14 installation
+                        is recommended for the best modding experience.
+                    </p>
 
-                     <h2> BEFORE INSTALLING THIS MOD</h2>
+                    <button type="button">
+                        Get NBA 2K14 Here
+                    </button>
 
-                       <p>Make sure you already have <span> 2K14 </span>  
-                        before installing the mod</p>
+                </div>
 
-                       <p>Mods modify your existing NBA 2K14 game files.
-                       Always back up your original files before installation.</p>
-                        <button>Get Nba 2K14 Here</button>
-                   </div>
+            </div>
 
-                   {/* LEFT ARROW */}
-                   
-                    <div className="side-arrow left-arrow">
-                        <img src={arrowLeft} alt="arrow-left" />
-                        
-                    </div>
+            {/* LEFT ARROW */}
+            <div className="side-arrow left-arrow" aria-hidden="true">
+                <img src={arrowLeft} alt="" />
+            </div>
 
-                   
+        </section>
+    );
+};
 
-               </div>
-
-
-
-         )
-
-
-     
-}
-
-
-export default download;
+export default Download;

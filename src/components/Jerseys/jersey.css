@@ -1,164 +1,716 @@
-    @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 
 
+/* =================================
+   GLOBAL RESET
+================================= */
 
-    *{
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Ubuntu', sans-serif;
-        }
-
-
-
-
-.jersey{
-    background:#0b0f19;
-    padding: 200px 200px;
-    height: auto;
-    
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Ubuntu', sans-serif;
 }
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+
+/* =================================
+   JERSEY SECTION
+================================= */
+
+.jersey {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+
+    width: 100%;
+    min-height: 100vh;
+
+    background: #161616;
+
+    padding: clamp(80px, 12vw, 160px)
+             clamp(16px, 5vw, 70px);
+}
+
+
+/* BACKGROUND IMAGE */
 
 .jersey::before {
     content: "";
     position: absolute;
     inset: 0;
-    background-image: url('./data/images/jersey-img.jpg');
+    z-index: -1;
+
+    background-image: url('./data/images/curry2.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+
     opacity: 0.10;
+
     mask-image: linear-gradient(
         to bottom,
         transparent 0%,
-        black 55%,
-        black 70%,
+        black 35%,
+        black 75%,
         transparent 100%
-    ) !important;
+    );
 
     -webkit-mask-image: linear-gradient(
         to bottom,
         transparent 0%,
-        black 55%,
-        black 70%,
+        black 35%,
+        black 75%,
         transparent 100%
     );
+
+    pointer-events: none;
 }
 
 
+/* =================================
+   MAIN CONTAINER
+================================= */
 
-.jersey-container{
-    width:90%;
-    max-width:1300px;
+.jersey-container {
+    position: relative;
+    z-index: 1;
+
+    width: 100%;
+    max-width: 1300px;
+
     margin: 0 auto;
-    
-   
 }
 
-
-
-.jersey-container p{
-    
-    color:#ff3b3b;
-    font-size: 18px;
-
+.jersey-container p {
+    color: #ff3b3b;
+    font-size: clamp(14px, 1.3vw, 18px);
+    line-height: 1.6;
+    overflow-wrap: break-word;
 }
 
-.jersey-container .date{
+.jersey-container .date {
+    display: block;
+
     font-size: 0.9rem;
-    margin-left: 1rem;
+    margin: 8px 16px 0;
 }
 
-.jersey-container .description{
+.jersey-container .description {
+    width: auto;
 
-  background: rgba(129, 1, 1, 0.2);
-  font-size: 0.8rem;
-  color: rgb(194, 193, 193);
-  backdrop-filter: blur(5px);
-  width: 300px;
-  margin-top: 10px;
-  margin-left: 1rem;
-  -webkit-backdrop-filter: blur(5px);
-  border: 2px solid rgba(255, 65, 65, 0.2);
-  border-radius: 5px;
-  box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.3),
-    inset 0 1px 1px rgba(255, 255, 255, 0.15);
+    margin: 12px 16px 18px;
+    padding: 12px;
+
+    background: rgba(129, 1, 1, 0.2);
+
+    font-size: 0.85rem;
+    line-height: 1.6;
+
+    color: rgb(194, 193, 193);
+
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+
+    border: 1px solid rgba(255, 65, 65, 0.2);
+    border-radius: 5px;
+
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        inset 0 1px 1px rgba(255, 255, 255, 0.15);
+
+    overflow-wrap: anywhere;
 }
 
-.jersey-container  .jersey-subtitle{
-    color:rgb(216, 216, 216);
-    text-transform:uppercase;
-    font-size: 2rem;
-    letter-spacing:2px;
+
+/* =================================
+   SECTION TITLE
+================================= */
+
+.jersey-container .jersey-subtitle {
+    color: rgb(216, 216, 216);
+
+    text-transform: uppercase;
+
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    letter-spacing: 2px;
+
     margin-top: 10px;
-    font-weight:700;
-}
 
-.modal-description{
-    width: 500px;
+    font-weight: 700;
 }
 
 
-.jersey-grid{
+/* =================================
+   MODAL DESCRIPTION
+================================= */
 
-    display:grid;
-    margin-top: 60px;
-    gap: 30px;
-    grid-template-columns:repeat(3,1fr);
-    
-
+.modal-description {
+    width: 100%;
+    max-width: 500px;
 }
 
-.jersey-info .jersey-title{
-    font-size: 1.2rem;
-    color:rgb(216, 216, 216);
-    text-align: center;
+
+/* =================================
+   JERSEY GRID
+================================= */
+
+.jersey-grid {
+    display: grid;
+
+    width: 100%;
+
+    margin-top: clamp(30px, 5vw, 60px);
+
+    gap: clamp(15px, 2vw, 30px);
+
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    align-items: stretch;
 }
 
+
+/* =================================
+   JERSEY CARD
+================================= */
 
 .jersey-card {
-    
-    width: 95%;
-    height: 110%;
-    background:#111827;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    height: 100%;
+    background: #131313;
     border-radius: 15px;
+    border: 1px solid #2a2e36;
     overflow: hidden;
-    border: 1px solid #20293c;
-    transition:.35s;
-    cursor: pointer !important;
+    transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
-.jersey-card:hover{
-     scale: 1.01;
+
+.jersey-card-footer{
+    display: flex;
+    justify-content: center;
+    padding: 0 68px 20px;
+    margin-right: 10px;
+    margin-top: auto;
 }
 
-.view-btn-jersey{
 
-    padding: 10px 20px;
-    margin: 0 auto;
-    border: none;
-    background-color: #ff3b3b;
-    border-radius: 36px;
-    color: #c7bfbf;
+/* =================================
+   JERSEY CARD TITLE
+================================= */
+
+.jersey-info {
+    width: 100%;
+    min-width: 0;
+}
+
+.jersey-info .jersey-title {
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+
+    color: rgb(216, 216, 216);
+
+    text-align: center;
+
+    line-height: 1.4;
+
+    overflow-wrap: break-word;
+}
+
+
+/* =================================
+   JERSEY IMAGE
+================================= */
+
+.jersey-info img {
+    width: 100%;
+
+    height: auto;
+
+    aspect-ratio: 16 / 10;
+
+    object-fit: cover;
+    object-position: center;
+
     cursor: pointer;
-    transform: translate(105%, 50%);
-    transition: all .3s ease;
-    font-weight: bold;
-    
+
+    border-radius: 3px;
+
+    transition: transform 0.3s ease;
 }
 
-.view-btn-jersey:hover{
+
+/* =================================
+   VIEW DETAILS BUTTON
+================================= */
+
+.jersey-download-btn{
+     display: block;
+    width: 100%;
+    max-width: 110px;
+    min-height: 40px;
+    padding: 8px 15px;
+    margin: 15px auto 0;
+    border: 2px solid #ff3b3b;
+    background-color: #ff3b3b;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.jersey-download-btn:hover{
     background: #5f0000;
     color: whitesmoke;
-    font-weight: bold;
+}
+
+.view-btn-jersey {
+     width: 100%;
+    max-width: 120px;
+    height: 45px;
+    padding: 5px 20px;
+    border: 2px solid #ff3b3b;
+    background-color: transparent;
+     border-radius: 10px;
+    color: #fff;
+    margin-top: 15px;
+    margin-right: 22px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.view-btn-jersey:hover {
+    color: rgb(255, 7, 7);
 }
 
 
-.jersey-info img{
-    width:100%;
-    height:230px;
-    object-fit:cover;
-    cursor: pointer !important;
+/* =================================
+   LARGE DESKTOP
+================================= */
+
+@media (min-width: 1440px) {
+
+    .jersey-container {
+        max-width: 1400px;
+    }
+
+    .jersey-grid {
+        gap: 35px;
+    }
+
+    .jersey-info img {
+        aspect-ratio: 16 / 10;
+    }
+
 }
 
+
+/* =================================
+   LAPTOP
+================================= */
+
+@media (max-width: 1200px) {
+
+    .jersey {
+        padding: 120px 50px;
+    }
+
+    .jersey-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 20px;
+    }
+
+}
+
+
+/* =================================
+   TABLET
+================================= */
+
+@media (max-width: 900px) {
+
+    .jersey {
+        padding: 110px 35px;
+    }
+
+    .jersey-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 22px;
+    }
+
+    .jersey-info img {
+        aspect-ratio: 16 / 10;
+    }
+
+}
+
+
+/* =================================
+   SMALL TABLET / LARGE MOBILE
+================================= */
+
+@media (max-width: 600px) {
+
+    .jersey {
+        padding: 100px 20px 60px;
+    }
+
+    .jersey-container {
+        width: 100%;
+    }
+
+    .jersey-grid {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+
+        gap: 18px;
+
+        margin-top: 30px;
+    }
+
+    .jersey-card {
+        max-width: 480px;
+        margin: 0 auto;
+        padding: 15px;
+    }
+
+    .jersey-info img {
+        aspect-ratio: 16 / 9;
+    }
+
+    .jersey-container .description {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .jersey-container .date {
+        margin-left: 0;
+    }
+
+    .view-btn-jersey {
+        max-width: 100%;
+    }
+
+}
+
+
+/* =================================
+   MOBILE
+================================= */
+
+@media (max-width: 480px) {
+
+    .jersey {
+        padding: 90px 15px 50px;
+    }
+
+    .jersey-container .jersey-subtitle {
+        font-size: 1.5rem;
+        letter-spacing: 1.5px;
+    }
+
+    .jersey-container p {
+        font-size: 14px;
+    }
+
+    .jersey-grid {
+        gap: 15px;
+        margin-top: 25px;
+    }
+
+    .slide-btn.next{
+        margin-left: 10rem !important;
+    }
+
+    .jersey-card {
+        padding: 12px;
+        border-radius: 12px;
+    }
+
+    .jersey-info .jersey-title {
+        font-size: 1.05rem;
+    }
+
+    .jersey-info img {
+        aspect-ratio: 16 / 9;
+    }
+
+    .jersey-container .description {
+        font-size: 0.8rem;
+        padding: 10px;
+    }
+
+    .view-btn-jersey {
+        min-height: 42px;
+        font-size: 13px;
+    }
+
+}
+
+
+/* =================================
+   EXTRA SMALL MOBILE
+================================= */
+
+@media (max-width: 350px) {
+
+    .jersey {
+        padding: 80px 10px 40px;
+    }
+
+    .jersey-container .jersey-subtitle {
+        font-size: 1.3rem;
+    }
+
+    .jersey-card {
+        padding: 10px;
+    }
+
+    .jersey-info .jersey-title {
+        font-size: 0.95rem;
+    }
+
+    .jersey-container .description {
+        padding: 8px;
+        font-size: 0.75rem;
+    }
+
+}
+
+
+/* =================================
+   ACCESSIBILITY
+================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+
+}
+
+
+/* =================================
+   JERSEY MODAL RESPONSIVENESS
+================================= */
+
+.jersey-modal {
+    padding: clamp(8px, 3vw, 25px);
+}
+
+.modal-container-jersey {
+    width: min(100%, 750px);
+    max-height: 94dvh;
+    overflow-y: auto;
+}
+
+.slider-jersey {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    max-height: 450px;
+}
+
+.modal-info {
+    min-width: 0;
+}
+
+.modal-description {
+    width: 100%;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+}
+
+.fullscreen-jersey {
+    padding: clamp(10px, 3vw, 30px);
+}
+
+.fullscreen-jersey-image {
+    max-width: 100%;
+    max-height: 90dvh;
+    object-fit: contain;
+}
+
+
+/* TABLET MODAL */
+
+@media (max-width: 768px) {
+
+    .jersey-modal {
+        padding: 15px;
+    }
+
+    .modal-container-jersey {
+        width: 100%;
+        max-height: 94dvh;
+        border-radius: 16px;
+    }
+
+    .slider-jersey {
+        aspect-ratio: 4 / 3;
+        max-height: 340px;
+    }
+
+    .button-credits {
+        margin-top: 22px;
+    }
+
+}
+
+
+/* MOBILE MODAL */
+
+@media (max-width: 480px) {
+
+    .jersey-modal {
+        padding: 8px;
+        align-items: center;
+    }
+
+    .modal-container-jersey {
+        width: 100%;
+        max-height: 96dvh;
+        padding: 15px;
+        border-radius: 13px;
+    }
+
+    .close-btn {
+        top: 10px;
+        right: 10px;
+        width: 34px;
+        height: 34px;
+        font-size: 15px;
+    }
+
+    .slider-jersey {
+        aspect-ratio: 4 / 3;
+        min-height: 160px;
+        max-height: 260px;
+        border-radius: 10px;
+    }
+
+    .slide-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+    }
+
+    .slide-btn.prev {
+        left: 8px;
+    }
+
+    .slide-btn.next {
+        right: 8px;
+    }
+
+    .slide-indicators {
+        margin-top: 15px;
+        margin-bottom: 18px;
+    }
+
+    .modal-info {
+        padding: 0 2px;
+    }
+
+    .modal-info .modal-title {
+        font-size: 19px;
+        margin-bottom: 15px;
+        padding-right: 25px;
+    }
+
+    .modal-info h4 {
+        font-size: 14px;
+        margin-top: 17px;
+    }
+
+    .modal-description,
+    .modal-info p {
+        font-size: 13px;
+        line-height: 1.7;
+    }
+
+    .installation-list {
+        padding-left: 19px;
+    }
+
+    .installation-list li {
+        font-size: 13px;
+        margin-bottom: 8px;
+    }
+
+    .watch-btn {
+        width: 100%;
+        min-height: 46px;
+    }
+
+    .button-credits {
+        gap: 8px;
+        padding-top: 15px;
+    }
+
+    .button-credits p {
+        width: 100%;
+    }
+
+    .button-credits span {
+        font-size: 12px;
+        padding: 8px 12px;
+    }
+
+    .fullscreen-jersey {
+        padding: 10px;
+    }
+
+    .fullscreen-close {
+        top: 12px;
+        right: 12px;
+        width: 38px;
+        height: 38px;
+    }
+
+}
+
+
+/* EXTRA SMALL MODAL */
+
+@media (max-width: 350px) {
+
+    .modal-container-jersey {
+        padding: 11px;
+    }
+
+    .slider-jersey {
+        min-height: 140px;
+    }
+
+    .slide-btn {
+        width: 30px;
+        height: 30px;
+        font-size: 13px;
+    }
+
+    .modal-info .modal-title {
+        font-size: 17px;
+    }
+
+}

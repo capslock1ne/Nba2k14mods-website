@@ -1,163 +1,345 @@
-    @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
 
+/* =========================
+   BASE
+========================= */
 
-    *{
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Ubuntu', sans-serif;
-        }
-
-
-
-
-.roster{
-    background:#0b0f19;
-    padding: 200px 200px;
-    height: auto;
-    
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Ubuntu', sans-serif;
 }
+
+.roster {
+    position: relative;
+    isolation: isolate;
+    width: 100%;
+    min-height: 100vh;
+    background: #161616;
+    padding: clamp(120px, 15vw, 200px) 5% 80px;
+    overflow: hidden;
+}
+
+/* Background image */
 
 .roster::before {
     content: "";
     position: absolute;
     inset: 0;
+    z-index: -1;
     background-image: url('../data/pwet.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     opacity: 0.10;
+
     mask-image: linear-gradient(
         to bottom,
         transparent 0%,
-        black 55%,
-        black 70%,
+        black 35%,
+        black 75%,
         transparent 100%
-    ) !important;
+    );
 
     -webkit-mask-image: linear-gradient(
         to bottom,
         transparent 0%,
-        black 55%,
-        black 70%,
+        black 35%,
+        black 75%,
         transparent 100%
     );
 }
 
+/* =========================
+   CONTAINER
+========================= */
 
-
-.roster-container{
-    width:90%;
-    max-width:1300px;
+.roster-container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 1300px;
     margin: 0 auto;
-    
-   
 }
 
-.modal-container{
-    align-items: center;
-    
+.roster-intro {
+    color: #ff3b3b;
+    font-size: clamp(14px, 1.5vw, 18px);
+    line-height: 1.6;
 }
 
-.roster-container p{
-    
-    color:#ff3b3b;
-    font-size: 18px;
-
-}
-
-.roster-container .date{
-    font-size: 0.9rem;
-    margin-left: 1rem;
-}
-
-.roster-container .description{
-
-  background: rgba(129, 1, 1, 0.2);
-  font-size: 0.8rem;
-  color: rgb(194, 193, 193);
-  backdrop-filter: blur(5px);
-  width: 300px;
-  margin-top: 10px;
-  margin-left: 1rem;
-  -webkit-backdrop-filter: blur(5px);
-  border: 2px solid rgba(255, 65, 65, 0.2);
-  border-radius: 5px;
-  box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.3),
-    inset 0 1px 1px rgba(255, 255, 255, 0.15);
-}
-
-.roster-container  .roster-subtitle{
-    color:rgb(216, 216, 216);
-    text-transform:uppercase;
-    font-size: 2rem;
-    letter-spacing:2px;
+.roster-container .roster-subtitle {
+    color: rgb(216, 216, 216);
+    text-transform: uppercase;
+    font-size: clamp(1.7rem, 3vw, 2rem);
+    letter-spacing: 2px;
     margin-top: 10px;
-    font-weight:700;
+    font-weight: 700;
 }
 
-.modal-description{
-    width: 500px;
+.divider {
+    width: 100%;
+    max-width: 1300px;
+    border: none;
+    border-top: 8px solid #d9dadb;
+    margin: 20px 0 25px;
 }
 
+/* =========================
+   ROSTER GRID
+========================= */
 
-.roster-grid{
-
-    display:grid;
-    margin-top: 60px;
+.roster-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 30px;
-    grid-template-columns:repeat(3,1fr);
-    
-
+    margin-top: 40px;
 }
 
-.roster-info .roster-title{
-    font-size: 1.2rem;
-    color:rgb(216, 216, 216);
-    text-align: center;
-}
-
+/* =========================
+   ROSTER CARD
+========================= */
 
 .roster-card {
-    
-    width: 95%;
-    height: 110%;
-     background:#131313;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    height: 100%;
+    background: #131313;
     border-radius: 15px;
-    border:1px solid #2a2e36;
-    cursor: pointer !important;
+    border: 1px solid #2a2e36;
+    overflow: hidden;
+    transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
+.roster-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 59, 59, 0.6);
+}
 
+.roster-info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+}
 
-.view-btn-roster{
+.roster-info .roster-title {
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    color: rgb(216, 216, 216);
+    text-align: center;
+    padding: 18px 12px;
+    overflow-wrap: anywhere;
+}
 
+.roster-info img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    height: auto;
+    object-fit: cover;
+}
+
+/* =========================
+   DATE AND DESCRIPTION
+========================= */
+
+.roster-container .date {
+    color: #aaa;
+    font-size: 0.9rem;
+    margin: 15px 16px 0;
+}
+
+.roster-container .description {
+    width: auto;
+    margin: 12px 16px 18px;
+    padding: 12px;
+    background: rgba(129, 1, 1, 0.2);
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: rgb(194, 193, 193);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 65, 65, 0.2);
+    border-radius: 5px;
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        inset 0 1px 1px rgba(255, 255, 255, 0.15);
+    overflow-wrap: anywhere;
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+.roster-card-footer {
+    display: flex;
+    justify-content: center;
+    padding: 0 16px 20px;
+    gap: 12px;
+    margin-top: auto;
+}
+
+.roster-download-btn{
     padding: 10px 20px;
-    margin: 0 auto;
     border: none;
     background-color: #ff3b3b;
-    border-radius: 36px;
-    color: #c7bfbf;
+    border-radius: 10px;
+    color: #fff;
     cursor: pointer;
-    transform: translate(105%, 50%);
-    transition: all .3s ease;
-    font-weight: bold;
-    
+    transition: all 0.3s ease;
+    font-size: 12px;
+    font-weight: 700;
 }
 
-.view-btn-roster:hover{
+
+.roster-download-btn:hover{
     background: #5f0000;
     color: whitesmoke;
-    font-weight: bold;
 }
 
-
-.roster-info img{
-    width:100%;
-    height:230px;
-    object-fit:cover;
-    cursor: pointer !important;
+.view-btn-roster {
+    width: 100%;
+    max-width: 100px;
+    padding: 5px 20px;
+    border: 2px solid #ff3b3b;
+    background-color: transparent;
+     border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 12;
+    font-weight: 700;
 }
 
+.view-btn-roster:hover {
+    background: #5f0000;
+    color: whitesmoke;
+}
+
+/* =========================
+   LARGE TABLETS / SMALL LAPTOPS
+========================= */
+
+@media screen and (max-width: 1100px) {
+    .roster {
+        padding-left: 4%;
+        padding-right: 4%;
+    }
+
+    .roster-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 25px;
+    }
+}
+
+/* =========================
+   TABLETS
+========================= */
+
+@media screen and (max-width: 768px) {
+    .roster {
+        padding: 130px 5% 60px;
+    }
+
+    .roster-grid {
+        gap: 20px;
+        margin-top: 30px;
+    }
+
+    .roster-info .roster-title {
+        padding: 15px 10px;
+    }
+
+    .roster-info img {
+        aspect-ratio: 16 / 10;
+    }
+
+    .roster-container .description {
+        font-size: 0.8rem;
+    }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media screen and (max-width: 550px) {
+    .roster {
+        padding: 110px 16px 45px;
+    }
+
+    .roster-grid {
+        grid-template-columns: 1fr;
+        gap: 22px;
+        margin-top: 25px;
+    }
+
+    .roster-intro {
+        font-size: 14px;
+    }
+
+    .roster-container .roster-subtitle {
+        font-size: 1.7rem;
+    }
+
+    .divider {
+        border-top-width: 5px;
+        margin: 15px 0 20px;
+    }
+
+    .roster-card {
+        width: 100%;
+        max-width: 420px;
+        margin: 0 auto;
+    }
+
+    .roster-info .roster-title {
+        font-size: 1.15rem;
+    }
+
+    .roster-info img {
+        aspect-ratio: 16 / 9;
+    }
+
+    .roster-container .description {
+        font-size: 0.85rem;
+    }
+
+    .view-btn-roster {
+        max-width: none;
+    }
+}
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media screen and (max-width: 360px) {
+    .roster {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .roster-container .roster-subtitle {
+        font-size: 1.5rem;
+    }
+
+    .roster-container .date {
+        font-size: 0.8rem;
+        margin-left: 12px;
+    }
+
+    .roster-container .description {
+        margin-left: 12px;
+        margin-right: 12px;
+        font-size: 0.78rem;
+        padding: 10px;
+    }
+
+    .roster-card-footer {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+}

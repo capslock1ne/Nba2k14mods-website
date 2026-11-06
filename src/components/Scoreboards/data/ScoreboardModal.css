@@ -263,6 +263,36 @@
 
 }
 
+/*  scrollbar */
+.modal-container-scoreboard {
+    overflow-y: auto;
+    scrollbar-width: thin; 
+    overflow-x: hidden;
+    scrollbar-color: #4b5563 transparent;
+}
+
+
+.modal-container-scoreboard::-webkit-scrollbar {
+    width: 6px;
+}
+
+.modal-container-scoreboard::-webkit-scrollbar-track {
+    background: transparent;
+    margin: 15px 0;
+}
+
+.modal-container-scoreboard::-webkit-scrollbar-thumb {
+    background: #374151;
+    border-radius: 20px;
+    border: 1px solid transparent;
+    background-clip: padding-box;
+    transition: background 0.3s ease;
+}
+
+.modal-container-scoreboard::-webkit-scrollbar-thumb:hover {
+    background: #6b7280;
+    background-clip: padding-box;
+}
 
 
 

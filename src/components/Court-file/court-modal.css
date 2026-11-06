@@ -1,356 +1,447 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 
+/* =========================
+   MODAL OVERLAY
+========================= */
 
-* {
-    margin: 0;
-    padding: 0;
+.court-modal,
+.court-modal * {
     box-sizing: border-box;
     font-family: 'Ubuntu', sans-serif;
 }
-
-
 
 .court-modal {
     position: fixed;
     inset: 0;
     width: 100%;
     height: 100vh;
+    height: 100dvh;
+    padding: 20px;
     background: rgba(0, 0, 0, 0.75);
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 30px;
     z-index: 9999;
 }
 
 .modal-backdrop {
     position: absolute;
     inset: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0.90;
-    mask-image: linear-gradient(
-        to bottom,
-        transparent 0%,
-        black 55%,
-        black 70%,
-        transparent 100%
-    ) !important;
-    backdrop-filter: blur(1px);
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(2px);
     z-index: 0;
 }
 
+/* =========================
+   MAIN MODAL
+========================= */
 
 .modal-container-court {
     position: relative;
+    z-index: 1;
+
     width: 100%;
-    max-width: 820px !important;
-    height: 95vh;
-    background: #111827;
-    border-radius: 20px;    
+    max-width: 820px;
+    max-height: calc(100dvh - 40px);
+
     padding: 28px;
+    background: #111827;
+    border-radius: 20px;
+
     display: flex;
     flex-direction: column;
-    box-shadow:
-        0 20px 60px rgba(0, 0, 0, 0.5);
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
 }
 
+/* Custom scrollbar */
 
-
-.court-modal-info{
-    padding: 55px;
-    display:flex;
-    flex-direction:column;
+.modal-container-court::-webkit-scrollbar {
+    width: 7px;
 }
 
-
-.court-modal-title{
-    color:#fff;
-    font-size:30px;
-    margin-bottom:20px;
+.modal-container-court::-webkit-scrollbar-track {
+    background: transparent;
 }
 
-
-
-.court-modal-divider{
-     border: none;
-    border-top: 1px solid #263044;
-    margin-bottom: 25px;
+.modal-container-court::-webkit-scrollbar-thumb {
+    background: #374151;
+    border-radius: 10px;
 }
 
-.slide-indicators-court{
-    text-align: center;
-    
+.modal-container-court::-webkit-scrollbar-thumb:hover {
+    background: #ff3b3b;
 }
 
+/* =========================
+   CLOSE BUTTON
+========================= */
+
+.close-btn {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    z-index: 10;
+
+    width: 42px;
+    height: 42px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #1f2937;
+    color: white;
+
+    font-size: 22px;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: 0.2s ease;
+}
+
+.close-btn:hover {
+    background: #ff3b3b;
+    transform: scale(1.05);
+}
+
+/* =========================
+   IMAGE GALLERY
+========================= */
+
+.court-gallery {
+    width: 100%;
+    flex-shrink: 0;
+}
 
 .slider {
     position: relative;
     width: 100%;
-    height: 320px;
+
+    aspect-ratio: 2 / 1;
+    max-height: 380px;
+    min-height: 180px;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 12px;
+
     background: #080808;
+    border-radius: 12px;
     overflow: hidden;
 }
 
+.court-image-clickable {
+    position: relative;
+    width: 100%;
+    height: 100%;
 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: zoom-in;
+    z-index: 1;
+}
+
+.modal-image-court {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    cursor: zoom-in;
+    transition: transform 0.2s ease;
+}
+
+.court-image-clickable:hover .modal-image-court {
+    transform: scale(1.01);
+}
+
+/* =========================
+   SLIDER ARROWS
+========================= */
 
 .slide-btn {
     position: absolute;
     top: 50%;
-    width: 50px;
-    height: 50px;
     transform: translateY(-50%);
+
+    width: 46px;
+    height: 46px;
+
     border: none;
     border-radius: 50%;
-    background: rgba(0, 0, 0, 0.85);
-    color: #ffffff;
-    font-size: 28px;
+
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+
+    font-size: 25px;
     font-weight: bold;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     cursor: pointer;
-    z-index: 100;
-    pointer-events: auto;
-    opacity: 1;
-    visibility: visible;
+    z-index: 5;
+
     transition: background 0.2s ease, transform 0.2s ease;
 }
 
-
-
-.modal-divider{
-    border: none;
-    height: 1px;
-    background: #1f2937;
-    width: 700px;
-    margin-top: -10px;
-}
-
-
-
 .slide-btn.prev {
-    left: 18px;
-
+    left: 15px;
 }
-
-
-
 
 .slide-btn.next {
-    right: 18px;
-
+    right: 15px;
 }
-
-
-
 
 .slide-btn:hover {
     background: rgba(255, 59, 59, 0.95);
-    transform:
-        translateY(-50%)
-        scale(1.08);
-
+    transform: translateY(-50%) scale(1.08);
 }
 
+/* =========================
+   SLIDER INDICATORS
+========================= */
 
-
-
-.slide-indicators {
-
+.slide-indicators-court {
+    width: 100%;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 8px;
-    margin: 0 auto;
-    margin-top: 30px;
-    margin-bottom: 25px;
-    z-index: 1;
+    gap: 3px;
 
+    padding: 12px 0 5px;
 }
-
-
-
 
 .indicator {
-
     width: 9px;
     height: 9px;
+    flex: 0 0 9px;
+
     padding: 0;
-    margin: 3px;
     border: none;
     border-radius: 50%;
+
     background: #777;
     cursor: pointer;
+
     transition: 0.2s ease;
-
 }
-
 
 .indicator:hover {
     background: #bbb;
-
 }
-
 
 .indicator.active {
     background: white;
     transform: scale(1.3);
-
 }
 
-
-
+/* =========================
+   COURT INFORMATION
+========================= */
 
 .court-modal-info {
-    padding: 30px 55px 35px;
+    width: 100%;
+    padding: 25px 55px 105px;
+
     display: flex;
     flex-direction: column;
-    
 }
 
 .court-modal-title {
     color: #fff;
     font-size: 20px;
+    font-weight: 700;
     margin-bottom: 10px;
-}
-
-.court-modal-info .description{
-    color:#ff3b3b;
-    font-size: 18px;
-    margin-bottom: 10px;
-}
-.court-modal-description{
-    color: #fff !important;
-    font-size: 0.9rem !important;
-}
-
-.court-modal-info .installation {
-    color:#ff3b3b;
-    font-size:  18px;
-    margin-top: 20px;
+    overflow-wrap: anywhere;
 }
 
 .court-modal-divider {
+    width: 100%;
     border: none;
     border-top: 1px solid #263044;
     margin-bottom: 25px;
 }
 
-.court-installation-list{
-    margin-top: 20px;
+.court-modal-info .description,
+.court-modal-info .installation {
+    color: #ff3b3b;
+    font-size: 18px;
+    font-weight: 700;
 }
 
-.court-installation-list li{
-    color: #fff;
-    font-size: 0.9rem;
-    margin-left: 10px;
+.court-modal-info .description {
     margin-bottom: 10px;
 }
 
-.court-watch-btn{
-     margin-top:25px;
-    width:220px;
-    border:none;
-    border-radius:40px;
-    padding:15px;
-    background:#ff3b3b;
-    color:white;
-    font-size:17px;
-    cursor:pointer;
-    transition:.3s;
+.court-modal-description {
+    color: #fff;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
 }
 
-.court-watch-btn:hover{
-     background:#ff5555;
-    transform:translateY(-3px);
-    
+.court-modal-info .installation {
+    margin-top: 20px;
 }
 
+.court-installation-list {
+    margin-top: 20px;
+    padding-left: 10px;
+}
+
+.court-installation-list li {
+    color: #fff;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    overflow-wrap: anywhere;
+}
+
+/* =========================
+   GET FILES BUTTON
+========================= */
+
+.court-watch-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: fit-content;
+    max-width: 100%;
+
+    margin-top: 20px;
+    padding: 13px 25px;
+
+    border: none;
+    border-radius: 40px;
+
+    background: #ff3b3b;
+    color: white;
+
+    font-size: 16px;
+    text-decoration: none;
+
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.court-watch-btn:hover {
+    background: #ff5555;
+    transform: translateY(-3px);
+}
+
+/* =========================
+   CREDITS
+========================= */
 
 .court-button-credits {
-     display: flex;
-     align-items: center !important;
-     justify-content: center !important;
-     text-align: center;
-     margin-top: -120px !important;
-     margin-left: 450px !important;
-     gap: 10px;
-}
+    position: absolute;
+    right: 48px;
+    bottom: 65px;
 
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 10px;
 
-.court-button-credits button {
-    padding: 10px 15px;
-    font-size: 0.8rem;
-    border: 2px solid rgba(255, 65, 65, 0.2);
-    background: rgba(129, 1, 1, 0.2);
-    border-radius: 12px;
-    margin-top: 45px;
-    color: #cbd5e1;
+    max-width: calc(100% - 80px);
 }
 
 .court-button-credits p {
-    width: 100px;
-    margin-top: 50px;
-    font-weight: 500;
+    margin: 0;
     color: #fff;
     font-size: 15px;
-    
+    font-weight: 500;
 }
 
+.court-button-credits button {
+    padding: 10px 15px;
+
+    border: 2px solid rgba(255, 65, 65, 0.2);
+    border-radius: 12px;
+
+    background: rgba(129, 1, 1, 0.2);
+    color: #cbd5e1;
+
+    font-size: 0.8rem;
+}
+
+/* =========================
+   FULLSCREEN IMAGE
+========================= */
 
 .fullscreen-court {
     position: fixed;
     inset: 0;
-    width: 100vw;
+
+    width: 100%;
     height: 100vh;
+    height: 100dvh;
+
+    padding: 25px;
+
     background: rgba(0, 0, 0, 0.96);
+
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 30px;
+
     z-index: 99999999;
     cursor: zoom-out;
 }
 
-
 .fullscreen-court-image {
     display: block;
+
     max-width: 95vw;
     max-height: 92vh;
+
     width: auto;
     height: auto;
+
     object-fit: contain;
     border-radius: 8px;
+
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
     cursor: default;
 }
-
-
 
 .fullscreen-close {
     position: absolute;
     top: 25px;
     right: 30px;
+
     width: 45px;
     height: 45px;
+
     border: 1px solid #263044;
     border-radius: 50%;
+
     background: #111827;
-    color: #ffffff;
+    color: white;
+
     font-size: 20px;
+
     display: flex;
     justify-content: center;
     align-items: center;
+
     cursor: pointer;
-    z-index: 10;
     transition: 0.2s ease;
 }
-
 
 .fullscreen-close:hover {
     background: #ff3b3b;
@@ -358,37 +449,191 @@
     transform: scale(1.05);
 }
 
+/* =========================
+   TABLETS
+========================= */
 
+@media (max-width: 768px) {
+    .court-modal {
+        padding: 15px;
+    }
 
-.court-image-clickable {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1; 
-    cursor: zoom-in;
+    .modal-container-court {
+        max-height: calc(100dvh - 30px);
+        padding: 22px;
+        border-radius: 16px;
+    }
+
+    .slider {
+        aspect-ratio: 16 / 9;
+        min-height: 170px;
+    }
+
+    .court-modal-info {
+        padding: 25px 20px 110px;
+    }
+
+    .court-button-credits {
+        right: 25px;
+        bottom: 45px;
+        max-width: calc(100% - 50px);
+    }
 }
 
+/* =========================
+   MOBILE PHONES
+========================= */
 
+@media (max-width: 480px) {
+    .court-modal {
+        padding: 18px;
+    }
 
+    .modal-container-court {
+        width: 100%;
+        max-height: calc(100dvh - 16px);
+        padding: 12px;
+        border-radius: 14px;
+    }
 
-/* IMAGE */
+    .modal-image-court{
+        height: 100%;
+        width: 100%;
+        margin-right: 21rem !important;
+    }
 
-.modal-image-court {
-    display: block;
-    width: 100%;
-    height: 100%;
-    max-height: 380px;
-    object-fit: contain;
-    cursor: zoom-in;
+    .close-btn {
+        top: 10px;
+        right: 10px;
+        width: 34px;
+        height: 34px;
+        font-size: 18px;
+    }
+
+    .slider {
+        aspect-ratio: 4 / 3;
+        min-height: 150px;
+        max-height: 260px;
+        border-radius: 9px;
+    }
+
+    .slide-btn {
+        width: 34px;
+        height: 34px;
+        font-size: 19px;
+    }
+
+    .slide-btn.prev {
+        left: 8px !important;
+    }
+
+    .slide-btn.next {
+        right: 8px !important;
+        margin-right: 23rem !important;
+    }
+
+    .slide-indicators-court {
+        gap: 2px;
+        padding: 10px 0;
+    }
+
+    .indicator {
+        width: 7px;
+        height: 7px;
+        flex-basis: 7px;
+        margin: 2px;
+    }
+
+    .court-modal-info {
+        padding: 18px 8px 20px;
+    }
+
+    .court-modal-title {
+        font-size: 19px;
+    }
+
+    .court-modal-divider {
+        margin-bottom: 18px;
+    }
+
+    .court-modal-info .description,
+    .court-modal-info .installation {
+        font-size: 16px;
+    }
+
+    .court-modal-description,
+    .court-installation-list li {
+        font-size: 0.85rem;
+        line-height: 1.5;
+    }
+
+    .court-installation-list {
+        padding-left: 5px;
+    }
+
+    .court-button-credits {
+        position: static;
+        max-width: 100%;
+        justify-content: flex-start;
+        margin: 0 8px 15px;
+        gap: 8px;
+    }
+
+    .court-button-credits p {
+        width: 100%;
+        font-size: 14px;
+    }
+
+    .court-button-credits button {
+        padding: 8px 12px;
+        font-size: 0.75rem;
+    }
+
+    .court-watch-btn {
+        font-size: 14px;
+        padding: 11px 20px;
+    }
+
+    .fullscreen-court {
+        padding: 12px;
+    }
+
+    .fullscreen-close {
+        top: 12px;
+        right: 12px;
+        width: 38px;
+        height: 38px;
+    }
 }
 
+/* =========================
+   VERY SHORT SCREENS
+========================= */
 
-/* Small visual indication */
+@media (max-height: 600px) and (min-width: 481px) {
+    .court-modal {
+        padding: 10px;
+    }
 
-.court-image-clickable:hover .modal-image-court {
-    transform: scale(1.01);
+    .modal-container-court {
+        max-height: calc(100dvh - 20px);
+        padding: 18px;
+    }
+
+    .slider {
+        aspect-ratio: 2 / 1;
+        max-height: 230px;
+        min-height: 140px;
+    }
+
+    .court-modal-info {
+        padding-bottom: 25px;
+    }
+
+    .court-button-credits {
+        position: static;
+        max-width: 100%;
+        margin: 0 55px 20px;
+        justify-content: flex-end;
+    }
 }
-

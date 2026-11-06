@@ -1,124 +1,132 @@
-import {
-  FiCalendar,
-  FiArrowRight,
-} from "react-icons/fi";
 
+import {
+    FiCalendar,
+} from "react-icons/fi";
 
 import './latest-upload-style/latest-upload.css';
 
-
-
- const upload = [
-    
+const upload = [
     {
-      
-      image: "/uploads/1.jpg",
-      icon: <FiCalendar />,
-      title: "SGA NEW CYBERFACE",
-      category: "Cyberfaces",
-      modder: "by UN2K",
-      date: "March 15, 2024",
-
-  
-
+        id: 1,
+        image: "/uploads/1.jpg",
+        icon: <FiCalendar />,
+        title: "SGA NEW CYBERFACE",
+        category: "Cyberfaces",
+        modder: "by UN2K",
+        date: "March 15, 2024",
     },
+    {
+        id: 2,
+        image: "/uploads/1.jpg",
+        icon: <FiCalendar />,
+        title: "Latest Uploads",
+        category: "Jerseys",
+        modder: "by UN2K",
+        date: "March 15, 2024",
+    },
+    {
+        id: 3,
+        image: "/uploads/1.jpg",
+        icon: <FiCalendar />,
+        title: "Latest Uploads",
+        category: "Courts",
+        modder: "by UN2K",
+        date: "March 15, 2026",
+    },
+    {
+        id: 4,
+        image: "/uploads/1.jpg",
+        icon: <FiCalendar />,
+        title: "Latest Uploads",
+        category: "Cyberfaces",
+        modder: "by UN2K",
+        date: "March 15, 2026",
+    },
+    {
+        id: 5,
+        image: "/uploads/1.jpg",
+        icon: <FiCalendar />,
+        title: "Latest Uploads",
+        category: "Cyberfaces",
+        modder: "by UN2K",
+        date: "March 15, 2026",
+    },
+    {
+        id: 6,
+        image: "/uploads/1.jpg",
+        icon: <FiCalendar />,
+        title: "Latest Uploads",
+        category: "Cyberfaces",
+        modder: "by UN2K",
+        date: "March 15, 2026",
+    },
+];
 
-     {
+function LatestUpload() {
 
-      image: "/uploads/1.jpg",
-      icon: <FiCalendar />,
-      title: "Latest Uploads",
-      category: "Jerseys",
-      modder: "by UN2K",
-      date: "March 15, 2024",
-     },
+    return (
 
-     {
-      image: "/uploads/1.jpg",
-      icon: <FiCalendar />,
-      title: "Latest Uploads",
-      category: "Courts",
-      modder: "by UN2K",
-      date: "March 15, 2026",
+        <section className="latest-upload">
 
-     },
+            <div className="latest-upload-container">
 
-      {
-      image: "/uploads/1.jpg",
-      icon: <FiCalendar />,
-      title: "Latest Uploads",
-      category: "Cyberfaces",
-      modder: "by UN2K",
-      date: "March 15, 2026",
+                {/* SECTION HEADER */}
 
-     },
+                <div className="latest-header">
 
-      {
-      image: "/uploads/1.jpg",
-      icon: <FiCalendar />,
-      title: "Latest Uploads",
-      category: "Cyberfaces",
-      modder: "by UN2K",
-      date: "March 15, 2026",
+                    <p>JUST DROPPED</p>
 
-     },
+                    <h2>LATEST UPLOADS</h2>
 
-      {
-      image: "/uploads/1.jpg",
-      icon: <FiCalendar />,
-      title: "Latest Uploads",
-      category: "Cyberfaces",
-      modder: "by UN2K",
-      date: "March 15, 2026",
-
-     },
-
-
-]
-
-
-
-
-   function LatestUpload() {
-
-
-       return (
-            
-           <section className="latest-upload"> 
- 
-               <div className="latest-header">
-                      
-                     <p> JUST DROPPED </p>
-                     <h2>LATEST UPLOADS</h2>
-
-               
-               </div>
-
-                <div className="latest-categories-grid">
-                     {upload.map((item, index) => {
-                        return (
-                        <div className="latest-category-card" key={index}>
-                            <img src={item.image} alt={item.title} />
-                            <div className="latest-category-info">
-                                <h3>{item.title}</h3>
-                                <p>{item.category}</p>
-                                <p>{item.modder}</p>
-                                <p className="date">
-                                {item.icon}
-                                {item.date}
-                                </p>
-                            </div>
-                        </div>
-                        )
-                        
-
-                     })}
                 </div>
 
+                {/* UPLOAD GRID */}
 
-           </section>
-       )
-   }
+                <div className="latest-categories-grid">
 
+                    {upload.map((item) => (
 
-   export default LatestUpload;
+                        <div
+                            className="latest-category-card"
+                            key={item.id}
+                        >
+
+                            <img
+                                src={item.image}
+                                alt={item.title}
+                                loading="lazy"
+                            />
+
+                            <div className="latest-category-info">
+
+                                <h3>{item.title}</h3>
+
+                                <p className="upload-category">
+                                    {item.category}
+                                </p>
+
+                                <p className="upload-modder">
+                                    {item.modder}
+                                </p>
+
+                                <p className="date">
+                                    {item.icon}
+                                    <time>{item.date}</time>
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    ))}
+
+                </div>
+
+            </div>
+
+        </section>
+
+    );
+}
+
+export default LatestUpload;

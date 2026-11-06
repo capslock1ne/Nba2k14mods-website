@@ -7,7 +7,7 @@ import JerseyModal from "./jersey-modal"
 
          const Jersey = () => {
 
-               const [showModal, setShowModal] = useState(false);
+               const [selectedJersey, setSelectedJersey] = useState(false);
 
 
                   return  (
@@ -40,13 +40,26 @@ import JerseyModal from "./jersey-modal"
                                             <p className="description"> {data.description}</p>
                                         </div>
 
-                                        <button
-                                            className="view-btn-jersey"
-                                            onClick={() => setShowModal(true)}
-                                        >
-                                            View Details
-                                        </button>
+                        <div className="jersey-card-footer">
 
+                                    <button
+                                        type="button"
+                                        className="jersey-download-btn"
+                                        onClick={() => window.open(data.downloadUrl, "_blank", "noopener,noreferrer")}
+                                        disabled={!data.downloadUrl}
+                                    >
+                                        Download
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        className="view-btn-jersey"
+                                        onClick={() => setSelectedJersey(data)}
+                                    >
+                                        View Details
+                                    </button>
+
+                                </div>
                                     </div>
                                                   
                                 </>
@@ -57,10 +70,10 @@ import JerseyModal from "./jersey-modal"
            
                            </div>
 
-                          {showModal && (
+                          {selectedJersey && (
                                 <JerseyModal
-                                 closeModal={() => setShowModal(false)}
-                                
+                                 closeModal={() => setSelectedJersey(null)}
+                                 jersey={selectedJersey}
                                 />
 
                           )}

@@ -1,4 +1,5 @@
-  import {
+
+import {
     FiUsers,
     FiEye,
     FiGlobe,
@@ -8,114 +9,124 @@
     FiBookOpen,
     FiArrowRight,
     FiGrid,
-  } from "react-icons/fi";
+} from "react-icons/fi";
 
+import { Link } from "react-router-dom";
 
-  import { Link } from "react-router-dom";
+import './categories-style/categories.css';
 
-  import './categories-style/categories.css';
- 
-  const categories = [
+const categories = [
     {
-      icon: <FiUsers />, 
-      arrow: <FiArrowRight />,
-      title: "Rosters",
-      mods: "1,240 mods",
-      link: "/Roster",
+        icon: <FiUsers />,
+        title: "Rosters",
+        mods: "1,240 mods",
+        link: "/Roster",
     },
-      {
-      icon: <FiEye />,
-      title: "Cyberfaces",
-      arrow: <FiArrowRight />,
-      mods: "8,750 mods",
-      link: "/CyberFace",
+    {
+        icon: <FiEye />,
+        title: "Cyberfaces",
+        mods: "8,750 mods",
+        link: "/CyberFace",
     },
+    {
+        icon: <FiGlobe />,
+        title: "Courts",
+        mods: "430 mods",
+        link: "/Court",
+    },
+    {
+        icon: <FiShield />,
+        title: "Jerseys",
+        mods: "920 mods",
+        link: "/Jersey",
+    },
+    {
+        icon: <FiAward />,
+        title: "Scoreboards",
+        mods: "180 mods",
+        link: "/ScoreBoard",
+    },
+    {
+        icon: <FiZap />,
+        title: "Shoes",
+        mods: "95 mods",
+        link: "/Shoes",
+    },
+    {
+        icon: <FiBookOpen />,
+        title: "Tutorials",
+        mods: "215 mods",
+        link: "/Tutorials",
+    },
+    {
+        icon: <FiGrid />,
+        title: "Other",
+        mods: "340 mods",
+        link: "/Other",
+    },
+];
 
-    {
-      icon: <FiGlobe />,
-      title: "Courts",
-      arrow: <FiArrowRight />,
-      mods: "430 mods",
-      link: "/Court",
-    },
-    {
-      icon: <FiShield />,
-      title: "Jerseys",
-      arrow: <FiArrowRight />,
-      mods: "920 mods",
-      link: "/Jersey"
-    },
-    {
-      icon: <FiAward />,
-      title: "Scoreboards",
-      arrow: <FiArrowRight />,
-      mods: "180 mods",
-      link: "/ScoreBoard"
-    },
-    {
-      icon: <FiZap />,
-      title: "Shoes",
-      arrow: <FiArrowRight />,
-      mods: "95 mods",
-      link: "/Shoes"
-    },
-    {
-      icon: <FiBookOpen />,
-      title: "Tutorials",
-      arrow: <FiArrowRight />,
-      mods: "215 mods",
-    },
-    {
-      icon: <FiGrid />,
-      title: "Other",
-      arrow: <FiArrowRight />,
-      mods: "340 mods",
-    },
-  ];
-
-  const Categories = () => {
-
+const Categories = () => {
 
     return (
-      <section className="categories"   id="categories">
+        <section className="categories" id="categories">
 
-    <div className="categories-content">
+            <div className="categories-content">
 
-      <p className="section-subtitle">BROWSE BY TYPE</p>
-        <h2 className="section-title">MOD CATEGORIES</h2>
+                {/* SECTION HEADER */}
+                <div className="categories-header">
 
-        <div className="categories-grid">
+                    <p className="section-subtitle">
+                        BROWSE BY TYPE
+                    </p>
 
-                {categories.map((item, index) => (
+                    <h2 className="section-title">
+                        MOD CATEGORIES
+                    </h2>
 
-                  <Link
-                    to={item.link}
-                    className="category-card"
-                    key={index}
-                  >
+                </div>
 
-                    <div className="category-icon">
-                      {item.icon}
-                    </div>
+                {/* CATEGORY GRID */}
+                <div className="categories-grid">
 
-                    <h3>{item.title}</h3>
+                    {categories.map((item) => (
 
-                    <div className="category-icon-arrow">
-                      {item.arrow}
-                    </div>
+                        <Link
+                            to={item.link}
+                            className="category-card"
+                            key={item.title}
+                        >
 
-                    <span>{item.mods}</span>
+                            <div className="category-card-top">
 
-                  </Link>
+                                <div className="category-icon">
+                                    {item.icon}
+                                </div>
 
-                ))}
+                                <div className="category-icon-arrow">
+                                    <FiArrowRight />
+                                </div>
+
+                            </div>
+
+                            <div className="category-card-info">
+
+                                <h3>{item.title}</h3>
+
+                                <span>{item.mods}</span>
+
+                            </div>
+
+                        </Link>
+
+                    ))}
+
+                </div>
 
             </div>
 
-          </div>
-        
-      </section>
+        </section>
     );
-  };
+};
 
-  export default Categories;
+export default Categories;

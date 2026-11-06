@@ -1,65 +1,137 @@
+
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import './navbar.css';
-import twoKlogo from '../assets/images/2k14-logo.png';
+import { FiMenu, FiX, FiChevronDown } from "react-icons/fi";
+import "./navbar.css";
+import twoKlogo from "../assets/images/2k14-logo.png";
 
+const Navbar = () => {
+    const [menuOpen, setMenuOpen] = useState(false);
+    const [dropdownOpen, setDropdownOpen] = useState(false);
 
+    const closeMenu = () => {
+        setMenuOpen(false);
+        setDropdownOpen(false);
+    };
 
+    const toggleMenu = () => {
+        setMenuOpen((prev) => !prev);
+        setDropdownOpen(false);
+    };
 
+    useEffect(() => {
+        const handleKeyDown = (event) => {
+            if (event.key === "Escape") {
+                closeMenu();
+            }
+        };
 
-          const Navbar = () => {
-            
-                  return (
-                    <nav className="navbar">
-                      <div className="nav-container">
+        document.addEventListener("keydown", handleKeyDown);
 
-                        <div className="logo">
-                          <img src={twoKlogo} alt="logo" />
-                          <h2>
-                            2K14<span>MODS</span>
-                          </h2>
-                        </div>
+        return () => {
+            document.removeEventListener("keydown", handleKeyDown);
+        };
+    }, []);
 
-                            <ul className="nav-menu">
-                                <li>
-                                  <Link to="/">HOME</Link>
-                                </li>
+    useEffect(() => {
+        document.body.style.overflow = menuOpen ? "hidden" : "";
 
-                                <li className="dropdown">
-                                  <Link to="/downloads">NBA 2K14 ▾</Link>
+        return () => {
+            document.body.style.overflow = "";
+        };
+    }, [menuOpen]);
 
-                                  <ul className="dropdown-menu">
-                                    <li>
-                                      <Link to="/downloads">Downloads</Link>
-                                    </li>
+    return (
+        <nav className="navbar">
+            <div className="nav-container">
 
-                                    <li>
-                                      <Link to="/cyberface">Cyberface</Link>
-                                    </li>
+                {/* LOGO */}
+                <Link to="/" className="logo" onClick={closeMenu}>
+                    <img src={twoKlogo} alt="NBA 2K14 Mods logo" />
 
-                                    <li>
-                                      <Link to="/roster">Roster</Link>
-                                    </li>
+                    <h2>
+                        2K14<span>MODS</span>
+                    </h2>
+                </Link>
 
-                                  </ul>
-                                  
-                                </li>
+                {/* HAMBURGER BUTTON */}
+                <button
+                    type="button"
+                    className="hamburger"
+                    onClick={toggleMenu}
+                    aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
+                    aria-expanded={menuOpen}
+                    aria-controls="nav-menu"
+                >
+                    {menuOpen ? <FiX /> : <FiMenu />}
+                </button>
 
-                                <li>
-                                  <Link to="/tutorials">TUTORIALS & GUIDES</Link>
-                                </li>
+                {/* NAVIGATION LINKS */}
+                <ul
+                    id="nav-menu"
+                    className={`nav-menu ${menuOpen ? "active" : ""}`}
+                >
+                    <li>
+                        <Link to="/" onClick={closeMenu}>
+                            HOME
+                        </Link>
+                    </li>
 
-                                <li>
-                                  <Link to="/community">COMMUNITY</Link>
-                                </li>
+                    {/* DROPDOWN */}
+                    <li className={`dropdown ${dropdownOpen ? "dropdown-active" : ""}`}>
+                        <button
+                            type="button"
+                            className="dropdown-toggle"
+                            onClick={() => setDropdownOpen((prev) => !prev)}
+                            aria-expanded={dropdownOpen}
+                        >
+                            NBA 2K14
+                            <FiChevronDown className="dropdown-icon" />
+                        </button>
 
-                                <li>
-                                  <Link to="/about">ABOUT</Link>
-                                </li>
-                              </ul>
-          
-                            </div>
-                      </nav>
-                  );
-                };
+                        <ul className="dropdown-menu">
+                            <li>
+                                <Link to="/downloads" onClick={closeMenu}>
+                                    Downloads
+                                </Link>
+                            </li>
+
+                            <li>
+                                <Link to="/cyberface" onClick={closeMenu}>
+                                    Cyberface
+                                </Link>
+                            </li>
+
+                            <li>
+                                <Link to="/roster" onClick={closeMenu}>
+                                    Roster
+                                </Link>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <Link to="/tutorials" onClick={closeMenu}>
+                            TUTORIALS & GUIDES
+                        </Link>
+                    </li>
+
+                    <li>
+                        <Link to="/community" onClick={closeMenu}>
+                            COMMUNITY
+                        </Link>
+                    </li>
+
+                    <li>
+                        <Link to="/about" onClick={closeMenu}>
+                            ABOUT
+                        </Link>
+                    </li>
+                </ul>
+
+            </div>
+        </nav>
+    );
+};
 
 export default Navbar;

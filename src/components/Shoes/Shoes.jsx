@@ -8,7 +8,7 @@ import ShoesModal from "../Shoes/Shoes-modal";
 
 const Shoes = () => {
 
-               const [showModal, setShowModal] = useState(false);
+              const [selectedShoes, setSelectedShoes] = useState(null);
 
 
                   return  (
@@ -19,7 +19,7 @@ const Shoes = () => {
 
             <div className="shoes-container">
 
-               <p >Updated Team Roster, ratings, and accuracy for overall current NBA teams</p>
+               <p>Upgrade your players' look with custom sneakers and exclusive basketball shoe collections.</p>
                  <h2  className="shoes-subtitle">Shoes</h2>
 
                     <hr className="divider" />
@@ -43,7 +43,7 @@ const Shoes = () => {
 
                                         <button
                                             className="view-btn-shoes"
-                                            onClick={() => setShowModal(true)}
+                                            onClick={() => setSelectedShoes(data)}
                                         >
                                             View Details
                                         </button>
@@ -58,10 +58,11 @@ const Shoes = () => {
            
                            </div>
 
-                          {showModal && (
+                          {selectedShoes && (
                                 <ShoesModal
-                                 closeModal={() => setShowModal(false)}
-                                
+                                 shoes={selectedShoes}
+                                 closeModal={() => setSelectedShoes(null)}
+                                 
                                 />
 
                           )}

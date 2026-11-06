@@ -14,8 +14,9 @@ const rosterData = [
     {
 
         id: 1,
-        title: "NBA 2K14 ROSTER PACKAGE",
+        title: "NBA 2K14 ROSTER PACKAGE 2026-2027",
         description: "Complete package: Exhibition Roster + MyCAREER Roster + Association Roster + Draft Classes - all in one download.",
+        descriptionModal: "The NBA 2K14 Ultimate Roster is a roster modification designed to update the original NBA 2K14 player database and provide an improved basketball experience. This roster package allows players to experience updated team lineups, player assignments, and roster changes, depending on the included roster version.",
         date: "July 2026",
         credits: "Kamatis2k",
         creditsTwo: "Mackubex",
@@ -36,6 +37,7 @@ const rosterData = [
 
     },
 
+    
 
 
 ]

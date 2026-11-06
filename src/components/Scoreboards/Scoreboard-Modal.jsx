@@ -108,7 +108,7 @@ import { createPortal } from "react-dom";
                                <hr className="modal-divider" />
 
                                <h4>Description</h4>
-                                 <p className="modal-description">{data.description}</p>
+                                 <p className="modal-description">{data.descriptionModal}</p>
 
                                     <h4>Installation Guide:</h4> 
                                     <ul className="installation-list">
