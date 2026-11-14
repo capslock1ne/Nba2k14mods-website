@@ -154,7 +154,7 @@ const modalShoes = ({ shoes, closeModal }) => {
                            Description
                        </h4>
    
-                       <p className="court-modal-description">
+                       <p className="shoes-modal-description">
                            {shoes.descriptionModal}
                        </p>
    
@@ -180,46 +180,9 @@ const modalShoes = ({ shoes, closeModal }) => {
                            </li>
                        </ul>
 
-                       <h4 className="important-notes">
-                           Important Notes
-                       </h4>
-
-                       <ul className="important-list">
-                          <li>
-                            Always keep a backup of your original game files.
-                          </li>
-                           
-                            <li>
-                            Make sure the shoe package is compatible with your NBA 2K14 installation.
-                          </li>
-
-                           <li>
-                            Some shoe modifications may replace existing shoe models or textures.
-                          </li>
-
-                           <li>
-                             Installing multiple shoe packs may cause conflicts if they use the same shoe slots.
-                          </li>
-
-                           <li>
-                              Follow the instructions provided with the download if additional steps are required.
-                           </li>
-
-
-                       </ul>
+                       
    
-                       <a
-                           href={shoes.youtube}
-                           target="_blank"
-                           rel="noopener noreferrer"
-                       >
-                           <button
-                               type="button"
-                               className="shoes-download-btn"
-                           >
-                               Get files
-                           </button>
-                       </a>
+                       
                    </div>
    
                    {/* CREDITS */}

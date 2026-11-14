@@ -1,5 +1,9 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 
+/* =========================
+   GLOBAL
+========================= */
 
 * {
     margin: 0;
@@ -8,151 +12,364 @@
     font-family: 'Ubuntu', sans-serif;
 }
 
+/* =========================
+   SHOES SECTION
+========================= */
 
 .Shoes {
-    position: relative;
-    background: #0b0f19;
     padding: 200px 200px;
-    min-height: 800px;
-    overflow: hidden;
+    height: auto;
 }
 
 .Shoes::before {
     content: "";
     position: absolute;
     inset: 0;
-    background-image: url('../data/images/background-shoes.jpg');
+    z-index: -1;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     opacity: 0.10;
+
     mask-image: linear-gradient(
         to bottom,
         transparent 0%,
         black 55%,
-        black 70%,
+        black 75%,
         transparent 100%
-    ) !important;
+    );
 
     -webkit-mask-image: linear-gradient(
         to bottom,
         transparent 0%,
         black 55%,
-        black 70%,
+        black 75%,
         transparent 100%
     );
 }
 
+/* =========================
+   CONTAINER
+========================= */
 
 .shoes-container {
     position: relative;
     z-index: 1;
-    width: 90%;
+    width: 100%;
     max-width: 1300px;
     margin: 0 auto;
 }
 
-.divider{
-     border: none;
-     width: 1300px !important;
-     border-top: 15px solid #d9dadb; 
-     margin-bottom: 25px;
+.shoes-intro {
+    color: #ff3b3b;
+    font-size: clamp(14px, 1.5vw, 20px);
+    line-height: 1.6;
+    margin-bottom: 10px;
 }
 
-
-.shoes-container p{
-    color:#ff3b3b;
-    font-size: 20px;
+.shoes-container .shoes-subtitle {
+    color: rgb(216, 216, 216);
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    font-weight: 700;
+    margin-bottom: 15px;
 }
 
-.shoes-container .shoes-subtitle{
-    font-size: 2.5rem;
-    color:rgb(216, 216, 216);
+.divider {
+    width: 100%;
+    max-width: 1300px;
+    border: none;
+    border-top: 8px solid #d9dadb;
+    margin-bottom: 25px;
 }
 
-.shoes-grid{
+/* =========================
+   SHOES GRID
+========================= */
 
-    display:grid;
-    margin-top: 60px;
-    gap: 30px;
-    grid-template-columns:repeat(3,1fr);
-    
-
+.shoes-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 120px;
+    margin-top: 40px;
+    align-items: stretch;
 }
 
+/* =========================
+   SHOES CARD
+========================= */
 
-.shoes-card{
-    width: 95%;
-    height: 110%;
-    background:#131313;
-    border-radius:15px;
-    overflow:hidden;
-    border:1px solid #20293c;
-    transition:.35s;
-    cursor: pointer;
+.shoes-card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    width: 340px;
+    padding: 0 !important;
+    height: 95%;
+    background: rgba(15, 15, 15, 0.65);
+    backdrop-filter: blur(12px);
+    margin-top: 10%;
+    -webkit-backdrop-filter: blur(12px);
+     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+    border-radius: 15px;
+    border: 1px solid #2a2e36;
+    overflow: hidden;
+    transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
-.shoes-card:hover{
-     scale: 1.01;
+.shoes-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 59, 59, 0.6);
 }
 
+.shoes-info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+    padding: 15px;
+}
 
-.shoes-info .shoes-title{
-
-    color:rgb(216, 216, 216);
-    text-transform:uppercase;
-    font-size: 1.5rem;
-    letter-spacing:2px;
-    margin-top: 10px;
+.shoes-info .shoes-title {
+    color: rgb(216, 216, 216);
+    text-transform: uppercase;
+    font-size: clamp(1rem, 1.5vw, 1.5rem);
+    letter-spacing: 2px;
+    margin: 5px 0 15px;
     text-align: center;
-    font-weight:700;
-    
+    font-weight: 700;
+    overflow-wrap: anywhere;
 }
 
-.description-shoes{
+/* =========================
+   SHOES IMAGE
+========================= */
+
+.shoes-info img {
+    display: block;
+    width: auto;
+    aspect-ratio: 16 / 10;
+    height: 200px !important;
+    object-fit: cover;
+}
+
+/* =========================
+   DATE
+========================= */
+
+.shoes-info .date {
+    color: #aaa;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 15px;
+    margin-top: 10px;
+}
+
+/* =========================
+   DESCRIPTION
+========================= */
+
+.description-shoes {
+    width: 100%;
+    max-width: 100%;
     background: rgba(129, 1, 1, 0.2);
-    font-size:  14px !important;
+    font-size: 14px;
+    line-height: 1.6;
     color: rgb(194, 193, 193);
     backdrop-filter: blur(5px);
-    width: 350px;
-    margin-top: 10px;
-    padding: 10px;
-    margin-left: 1rem;
     -webkit-backdrop-filter: blur(5px);
+
+    margin-top: auto;
+    padding: 12px;
+
     border: 2px solid rgba(255, 65, 65, 0.2);
     border-radius: 5px;
+
     box-shadow:
         0 8px 32px rgba(0, 0, 0, 0.3),
         inset 0 1px 1px rgba(255, 255, 255, 0.15);
+
+    overflow-wrap: anywhere;
 }
 
-.shoes-info img{
-    width: 100% !important;
-    height:230px;
-    object-fit:contain !important;
+/* =========================
+   CARD FOOTER / BUTTON
+========================= */
 
-}
-
-.shoes-info .date {
-    font-size: 0.9rem;
-    margin-left: 1rem;
-}
-.view-btn-shoes{
-    padding: 10px 20px;
+.shoes-card-footer {
+    display: flex;
+    justify-content: center;
+    padding: 10px !important;
+    gap: 12px;
     margin: 0 auto;
-    border: none;
-    background-color: #ff3b3b;
-    border-radius: 36px;
-    color: #c7bfbf;
-    cursor: pointer;
-    transform: translate(105%, 50%);
-    transition: all .3s ease;
-    font-weight: bold;
+   transform: translateY(-20%); 
+    
 }
 
 
-.view-btn-shoes:hover{
+.shoes-download-btn{
+     display: block;
+    width: 100%;
+    max-width: 110px;
+    height: 40px !important;
+    padding: 8px 15px;
+    margin: 15px auto 0;
+    border: 2px solid #ff3b3b;
+    background-color: #ff3b3b;
+    border-radius: 10px !important;
+    color: #fff; 
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 11px !important;
+    font-weight: 700;
+}
+
+
+.shoes-download-btn:hover{
     background: #5f0000;
     color: whitesmoke;
-    font-weight: bold;
+}
+
+.view-btn-shoes {
+    width: 100%;
+    max-width: 120px;
+    height: 40px;
+    padding: 5px 20px;
+    border: 2px solid #ff3b3b;
+    background-color: transparent;
+    border-radius: 10px;
+    color: #fff;
+    margin-top: 24px;
+    margin-right: 22px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.view-btn-shoes:hover {
+    color: rgb(192, 2, 2);
+}
+
+/* =========================
+   LARGE LAPTOPS
+========================= */
+
+@media (max-width: 1200px) {
+    .shoes-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 20px;
+    }
+
+    .Shoes {
+        padding-left: 35px;
+        padding-right: 35px;
+    }
+}
+
+/* =========================
+   TABLETS
+========================= */
+
+@media (max-width: 900px) {
+    .shoes-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+    }
+
+    .Shoes {
+        padding-top: 130px;
+    }
+
+    .shoes-info img {
+        height: 200px;
+    }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+    .Shoes {
+        padding: 110px 15px 50px;
+    }
+
+    .shoes-grid {
+        grid-template-columns: 1fr;
+        gap: 22px;
+        margin-top: 25px;
+    }
+
+    .shoes-container {
+        width: 100%;
+    }
+
+    .shoes-intro {
+        font-size: 14px;
+    }
+
+    .shoes-container .shoes-subtitle {
+        font-size: 2rem;
+    }
+
+    .divider {
+        border-top-width: 5px;
+        margin-bottom: 20px;
+    }
+
+    .shoes-card {
+        width: 100%;
+        max-width: 450px;
+        margin: 0 auto;
+    }
+
+    .shoes-info {
+        padding: 15px;
+    }
+
+    .shoes-info .shoes-title {
+        font-size: 1.2rem;
+    }
+
+    .shoes-info img {
+        height: 210px;
+    }
+
+    .description-shoes {
+        font-size: 13px;
+    }
+
+    .view-btn-shoes {
+        max-width: none;
+    }
+}
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 380px) {
+    .Shoes {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .shoes-info img {
+        height: 170px;
+    }
+
+    .shoes-info .shoes-title {
+        font-size: 1rem;
+        letter-spacing: 1px;
+    }
+
+    .description-shoes {
+        font-size: 12px;
+        padding: 10px;
+    }
+
+    .view-btn-shoes {
+        font-size: 13px;
+        padding: 11px 15px;
+    }
 }

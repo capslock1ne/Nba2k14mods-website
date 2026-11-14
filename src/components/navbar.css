@@ -76,8 +76,9 @@
 .nav-menu li {
     list-style: none;
     position: relative;
-    font-size: 0.9rem;
+    font-size: 0.8rem !important;
     opacity: 0.9;
+
 }
 
 .nav-menu a,
@@ -86,8 +87,8 @@
     text-decoration: none;
 
     font-family: 'Ubuntu', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 400;
+    font-size: 0.8rem;
+    font-weight: 550;
 
     transition: color 0.3s ease;
 }

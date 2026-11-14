@@ -15,6 +15,12 @@ const ScoreBoardData = [
          id: 1,
          title: "ScoreBoard Pack",
          titleTwo: "ScoreBoard Pack",
+         downloadUrl: [
+            {
+                name: "ScoreBoard Pack",
+                url: "https://www.mediafire.com/file/btf4qf0zhc36m3y/ScoreBoard_Pack.rar/file",
+            }
+        ],
          description: "Modernized scoreboard and HUD designs for a cleaner in-game overlay.",
          descriptionModal: "Modernized scoreboard and HUD designs for a cleaner in-game overlay. This package includes updated graphics for the in-game scoreboard, shot clock, and other HUD elements, providing a more immersive and visually appealing experience for players. The new designs are optimized for clarity and readability, ensuring that players can easily track game information during gameplay.",
          date: "July 2026",

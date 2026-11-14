@@ -247,10 +247,7 @@ const ModalJersey = ({ jersey, closeModal }) => {
 
                         <ul className="installation-list">
 
-                            <li>
-                                Join Discord community to get the files.
-                            </li>
-
+                        
                             <li>
                                 Back up your original game files before installing.
                             </li>

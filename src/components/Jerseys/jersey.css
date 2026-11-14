@@ -32,39 +32,27 @@ img {
 ================================= */
 
 .jersey {
-    position: relative;
-    isolation: isolate;
-    overflow: hidden;
-
-    width: 100%;
-    min-height: 100vh;
-
-    background: #161616;
-
-    padding: clamp(80px, 12vw, 160px)
-             clamp(16px, 5vw, 70px);
+    padding: 200px 200px;
+    height: auto;
 }
 
 
-/* BACKGROUND IMAGE */
+
 
 .jersey::before {
-    content: "";
+   content: "";
     position: absolute;
     inset: 0;
     z-index: -1;
-
-    background-image: url('./data/images/curry2.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-
     opacity: 0.10;
 
     mask-image: linear-gradient(
         to bottom,
         transparent 0%,
-        black 35%,
+        black 55%,
         black 75%,
         transparent 100%
     );
@@ -72,12 +60,10 @@ img {
     -webkit-mask-image: linear-gradient(
         to bottom,
         transparent 0%,
-        black 35%,
+        black 55%,
         black 75%,
         transparent 100%
     );
-
-    pointer-events: none;
 }
 
 
@@ -177,7 +163,7 @@ img {
 
     gap: clamp(15px, 2vw, 30px);
 
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
 
     align-items: stretch;
 }
@@ -188,11 +174,17 @@ img {
 ================================= */
 
 .jersey-card {
-    display: flex;
+     display: flex;
     flex-direction: column;
     min-width: 0;
-    height: 100%;
-    background: #131313;
+    width: 340px;
+    padding: 40px 0 0 0;
+    height: 95%;
+    background: rgba(15, 15, 15, 0.65);
+    backdrop-filter: blur(12px);
+    margin-top: 10%;
+    -webkit-backdrop-filter: blur(12px);
+     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
     border-radius: 15px;
     border: 1px solid #2a2e36;
     overflow: hidden;
@@ -205,6 +197,8 @@ img {
     justify-content: center;
     padding: 0 68px 20px;
     margin-right: 10px;
+    margin-left: 20px;
+    gap: 10px;
     margin-top: auto;
 }
 
@@ -220,7 +214,7 @@ img {
 
 .jersey-info .jersey-title {
     font-size: clamp(1rem, 1.5vw, 1.2rem);
-
+    margin-top: -30px;
     color: rgb(216, 216, 216);
 
     text-align: center;
@@ -238,7 +232,7 @@ img {
 .jersey-info img {
     width: 100%;
 
-    height: auto;
+    height: 180px;
 
     aspect-ratio: 16 / 10;
 
@@ -258,10 +252,10 @@ img {
 ================================= */
 
 .jersey-download-btn{
-     display: block;
+    display: block;
     width: 100%;
     max-width: 110px;
-    min-height: 40px;
+    height: 40px !important;
     padding: 8px 15px;
     margin: 15px auto 0;
     border: 2px solid #ff3b3b;
@@ -280,20 +274,19 @@ img {
 }
 
 .view-btn-jersey {
-     width: 100%;
-    max-width: 120px;
-    height: 45px;
-    padding: 5px 20px;
+    display: flex;
+    height: 40px;
+    padding: 5px 45px !important;
     border: 2px solid #ff3b3b;
     background-color: transparent;
-     border-radius: 10px;
+    border-radius: 10px;
     color: #fff;
     margin-top: 15px;
-    margin-right: 22px;
+    margin-right: 10px;
     cursor: pointer;
     transition: all 0.3s ease;
-    font-size: 12px;
-    font-weight: 700;
+    font-size: 11px;
+    font-weight: 600;
 }
 
 .view-btn-jersey:hover {

@@ -91,7 +91,7 @@ const Navbar = () => {
 
                         <ul className="dropdown-menu">
                             <li>
-                                <Link to="/downloads" onClick={closeMenu}>
+                                <Link to="/Download" onClick={closeMenu}>
                                     Downloads
                                 </Link>
                             </li>
@@ -105,6 +105,20 @@ const Navbar = () => {
                             <li>
                                 <Link to="/roster" onClick={closeMenu}>
                                     Roster
+                                </Link>
+
+                                <Link to="/court" onClick={closeMenu}>
+                                    Court
+                                </Link>
+
+
+                                <Link to="/Jersey" onClick={closeMenu}>
+                                    Jersey
+                                </Link>
+
+
+                                <Link to="/ScoreBoard" onClick={closeMenu}>
+                                    ScoreBoard
                                 </Link>
                             </li>
                         </ul>

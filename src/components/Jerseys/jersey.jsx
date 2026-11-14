@@ -3,7 +3,7 @@ import { useState } from "react";
 import './jersey.css';
 import JerseyData from "./data/jerseys";
 import JerseyModal from "./jersey-modal"
-
+import Credits from "../credits/credit";
 
          const Jersey = () => {
 
@@ -18,8 +18,12 @@ import JerseyModal from "./jersey-modal"
 
             <div className="jersey-container">
 
-               <p >Updated Team Roster, ratings, and accuracy for overall current NBA teams</p>
-                 <h2  className="jersey-subtitle">ROSTERS</h2>
+               <p>
+                    Explore updated NBA 2K14 jerseys, including City Edition,
+                    Classic Edition, Statement Edition, and custom jersey designs.
+                </p>
+
+                <h2 className="jersey-subtitle">JERSEYS</h2>
 
                     <hr className="divider" />
 
@@ -45,8 +49,16 @@ import JerseyModal from "./jersey-modal"
                                     <button
                                         type="button"
                                         className="jersey-download-btn"
-                                        onClick={() => window.open(data.downloadUrl, "_blank", "noopener,noreferrer")}
-                                        disabled={!data.downloadUrl}
+                                        onClick={() => {
+                                        data.downloadUrl?.forEach((file) => {
+                                            window.open(
+                                                file.url,
+                                                "_blank",
+                                                "noopener,noreferrer"
+                                            );
+                                        });
+                                    }}
+                                    disabled={!data.downloadUrl?.length}
                                     >
                                         Download
                                     </button>
@@ -80,8 +92,10 @@ import JerseyModal from "./jersey-modal"
 
 
                      </div>
+                     <Credits />
 
                  </div>
+              
               
               
               </>

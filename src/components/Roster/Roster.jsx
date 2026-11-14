@@ -3,6 +3,9 @@ import React, { useState } from "react";
 import rosterData from "./data/roster";
 import "./roster-style/roster.css";
 import RosterModal from "./roster-modal";
+import Credits from "../credits/credit";
+
+
 
 const Roster = () => {
     const [selectedRoster, setSelectedRoster] = useState(null);
@@ -48,7 +51,16 @@ const Roster = () => {
 
                                  <button
                                     className="roster-download-btn"
-                                    onClick={() => setSelectedRoster(data)}
+                                    onClick={() => {
+                                        data.downloadUrl?.forEach((file) => {
+                                            window.open(
+                                                file.url,
+                                                "_blank",
+                                                "noopener,noreferrer"
+                                            );
+                                        });
+                                    }}
+                                    disabled={!data.downloadUrl?.length}
                                 >
                                     Download 
                                 </button>
@@ -73,6 +85,9 @@ const Roster = () => {
                 )}
 
             </div>
+             
+             <Credits />
+             
         </section>
     );
 };

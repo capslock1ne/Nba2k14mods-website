@@ -16,11 +16,44 @@
    MAIN SECTION
 ================================ */
 
+body {
+    min-height: 100vh;
+    position: relative;
+    isolation: isolate;
+    background: transparent;
+    color: white;
+}
+
+/* =================================
+   ONE CONTINUOUS PAGE BACKGROUND
+================================= */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            rgba(15, 24, 23, 0.86),
+            rgba(15, 19, 20, 0.90)
+        ),
+        url('./images/newBlackback.jpg');
+
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    z-index: -1;
+    pointer-events: none;
+}
+
+
 .latest-upload {
     width: 100%;
     min-height: auto;
 
-    background: #111827;
+  
 
     padding: clamp(50px, 7vw, 100px) 20px;
 }
@@ -31,7 +64,7 @@
 
 .latest-upload-container {
     width: 100%;
-    max-width: 1500px;
+    max-width: 1300px !important;
 
     margin: 0 auto;
 }
@@ -74,9 +107,9 @@
 .latest-categories-grid {
     display: grid;
 
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
 
-    gap: 22px;
+    gap: 20px;
 }
 
 /* ==============================
@@ -85,23 +118,14 @@
 
 .latest-category-card {
     display: flex;
-
     align-items: center;
-
     gap: 16px;
-
     min-width: 0;
-
-    background: #111827;
-
+    background: #131313;
     border: 1px solid #1f2937;
-
     border-radius: 14px;
-
     padding: 16px;
-
     transition: all 0.3s ease;
-
     cursor: pointer;
 }
 

@@ -62,6 +62,12 @@ const CourtData = [
          title: "Core Court",
          image: imgCard1,
          titleTwo: "Main Court Package",
+         downloadUrl: [
+            {
+                name: "CORE COURT",
+                url: "https://www.mediafire.com/file/ohkk66lkqrfnf2l/core_courts.zip/file",
+            }
+        ],
          description: "Core court package for NBA 2K14, featuring all the main courts of the NBA teams.",
          descriptionModal: "The Core Court package is a collection of basketball court modifications for NBA 2K14, featuring the home courts of NBA teams. It is designed for players who want to enhance the visual presentation of their game with updated court designs and details. This package brings together the main NBA team courts in one collection, making it easier for players to customize their NBA 2K14 experience without searching for individual court modifications.",
          date: "July 2026",
@@ -117,6 +123,12 @@ const CourtData = [
          title: "NBA City Court 2025",
          image: imgCard1,
          titleTwo: "City Court Package",
+         downloadUrl: [
+            {
+                name: "NBA City Court 2025",
+                url: "https://www.mediafire.com/file/xe8qsbxbaxw7l34/NBA_CITY_COURT_2025_BY_AJF2K.zip/file",
+            }
+        ],
          description: "City court package for NBA 2K14, featuring all the main courts of the NBA teams.",
          descriptionModal: "The NBA City Court 2025 package is a collection of basketball court modifications for NBA 2K14, featuring the home courts of NBA teams. It is designed for players who want to enhance the visual presentation of their game with updated court designs and details. This package brings together the main NBA team courts in one collection, making it easier for players to customize their NBA 2K14 experience without searching for individual court modifications.",
          date: "July 2026",

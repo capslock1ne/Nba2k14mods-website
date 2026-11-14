@@ -12,12 +12,38 @@
 
 
 .about-page{
-    background:#0b0f19;
     color:white;
     min-height:120vh;
     padding: 250px 8%;
 }
 
+
+.about-page:before {
+     content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    opacity: 0.10;
+
+    mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        black 35%,
+        black 75%,
+        transparent 100%
+    );
+
+    -webkit-mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        black 35%,
+        black 75%,
+        transparent 100%
+    );
+}
 
 
 /* HERO */
@@ -80,7 +106,7 @@
 }
 
 .stat-card{
-    background:#131a2a;
+    background: #181818;
     border:1px solid #222b3d;
     border-radius:16px;
     padding:35px;
@@ -129,7 +155,7 @@
 
 .feature-item {
     width: 100%;
-    background: #131a2a;
+    background: #181818;
     border: 1px solid #222b3d;
     overflow: hidden;
     transition: border-color 0.25s ease;
@@ -257,7 +283,7 @@
 
 
 .about-cta{
-    background: #131a2a;
+    background: #181818;
     border: 1px solid #222b3d;
     border-radius: 25px;
     text-align: center;

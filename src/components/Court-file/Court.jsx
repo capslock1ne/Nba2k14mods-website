@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import "./court.css";
 import courtData from "./data/court";
 import Courtmodal from "./court-modal";
+import Credits from "../credits/credit";
 
 const Court = () => {
     const [selectedCourt, setSelectedCourt] = useState(null);
@@ -57,8 +58,16 @@ const Court = () => {
                                     <button
                                         type="button"
                                         className="court-download-btn"
-                                        onClick={() => window.open(data.downloadUrl, "_blank", "noopener,noreferrer")}
-                                        disabled={!data.downloadUrl}
+                                        onClick={() => {
+                                        data.downloadUrl?.forEach((file) => {
+                                            window.open(
+                                                file.url,
+                                                "_blank",
+                                                "noopener,noreferrer"
+                                            );
+                                        });
+                                    }}
+                                    disabled={!data.downloadUrl?.length}
                                     >
                                         Download
                                     </button>
@@ -85,6 +94,9 @@ const Court = () => {
                 )}
 
             </div>
+
+            <Credits />
+
         </main>
     );
 };

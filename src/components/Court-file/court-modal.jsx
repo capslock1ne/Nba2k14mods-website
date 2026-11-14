@@ -205,17 +205,7 @@ const Courtmodal = ({ court, closeModal }) => {
                         <li>Overwrite files when prompted and launch the game.</li>
                     </ul>
 
-                    {court.youtube && (
-                        <a
-                            href={court.youtube}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="court-watch-btn"
-                        >
-                            Get files
-                        </a>
-                    )}
-
+                    
                 </div>
 
                 {/* CREDITS */}

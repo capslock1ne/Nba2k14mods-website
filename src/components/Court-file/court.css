@@ -12,15 +12,8 @@
 }
 
 .court {
-    position: relative;
-    isolation: isolate;
-    width: 100%;
-    min-height: 100vh;
-
-    padding: clamp(100px, 12vw, 160px) 24px 100px;
-
-    background: #0b0f19;
-    overflow: hidden;
+    padding: 200px 200px;
+    height: auto;
 }
 
 /* Background image */
@@ -30,18 +23,15 @@
     position: absolute;
     inset: 0;
     z-index: -1;
-
-    background-image: url('./images/background-court.avif');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-
     opacity: 0.10;
 
     mask-image: linear-gradient(
         to bottom,
         transparent 0%,
-        black 35%,
+        black 55%,
         black 75%,
         transparent 100%
     );
@@ -49,7 +39,7 @@
     -webkit-mask-image: linear-gradient(
         to bottom,
         transparent 0%,
-        black 35%,
+        black 55%,
         black 75%,
         transparent 100%
     );
@@ -86,7 +76,7 @@
 .court-container .court-subtitle {
     margin: 0;
     color: #d8d8d8;
-    font-size: clamp(28px, 4vw, 42px);
+    font-size: clamp(20px, 4vw, 42px);
     font-weight: 700;
     letter-spacing: 2px;
 }
@@ -107,9 +97,8 @@
 
 .court-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-
-    gap: 30px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 120px;
     margin-top: 45px;
 }
 
@@ -118,22 +107,21 @@
 ========================= */
 
 .court-card {
-    display: flex;
+     display: flex;
     flex-direction: column;
-
-    width: 100%;
     min-width: 0;
-    height: 100%;
-
-    padding: 18px;
-
-    background: #131313;
-    border: 1px solid #2a2e36;
+    width: 340px;
+    padding: 0;
+    height: 95%;
+    background: rgba(15, 15, 15, 0.65);
+    backdrop-filter: blur(12px);
+    margin-top: 10%;
+    -webkit-backdrop-filter: blur(12px);
+     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
     border-radius: 15px;
-
+    border: 1px solid #2a2e36;
     overflow: hidden;
-    transition: transform 0.3s ease, border-color 0.3s ease,
-                box-shadow 0.3s ease;
+    transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
 .court-card:hover {
@@ -175,7 +163,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
+    object-fit: cover;
     width: 100%;
     aspect-ratio: 16 / 10;
 
@@ -185,13 +173,11 @@
 }
 
 .court-image-wrapper img {
-    display: block;
-
+   display: block;
     width: 100%;
-    height: 100%;
-
-    object-fit: contain;
-    transition: transform 0.3s ease;
+    aspect-ratio: 16 / 10;
+    height: 50%;
+    object-fit: cover;
 }
 
 .court-card:hover .court-image-wrapper img {
@@ -203,9 +189,9 @@
 ========================= */
 
 .court-info .date {
-    margin: 15px 0 0;
-
-    color: #ff5555;
+    margin-left: 15px;
+    margin-top: 20px;
+    color: #c2c1c1;
     font-size: 13px;
     font-weight: 500;
 }
@@ -215,14 +201,12 @@
 ========================= */
 
 .description-court {
-    width: 100%;
-    margin: 12px 0 20px;
+    width: 90%;
+    margin: 12px 0 15px 10px;
     padding: 12px;
-
     background: rgba(129, 1, 1, 0.2);
     border: 1px solid rgba(255, 65, 65, 0.2);
     border-radius: 8px;
-
     color: #c2c1c1;
     font-size: 14px;
     line-height: 1.6;
@@ -269,16 +253,17 @@
 }
 
 .view-btn-court {
-   width: 100%;
-    max-width: 100px;
+    width: 100% !important;
+    max-width: 120px !important;
     padding: 5px 20px;
     border: 2px solid #ff3b3b;
     background-color: transparent;
-     border-radius: 10px;
+    height: 40px;
+    border-radius: 10px;
     color: #fff;
     cursor: pointer;
     transition: all 0.3s ease;
-    font-size: 12;
+    font-size: 11px;
     font-weight: 700;
 }
 
@@ -368,6 +353,9 @@
         margin: 0 auto;
         padding: 16px;
     }
+
+   
+      
 
     .court-info .court-title {
         font-size: 19px;

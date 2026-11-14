@@ -1,251 +1,558 @@
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 
-    *{
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Ubuntu', sans-serif;
-     }
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;600;700&display=swap');
 
+/* =========================
+   GLOBAL
+========================= */
 
-
-.cyberface{ 
-    
-     background-size: cover;
-     background-position: center;
-     background-repeat: no-repeat;
-     justify-content: center;
-     font-family: "Segoe UI", sans-serif;
-       
-     
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Ubuntu', sans-serif;
 }
 
+.cyberface {
+    position: relative;
+    isolation: isolate;
+    width: 100%;
+    min-height: 100vh;
+    padding: 1px 20px 60px;
+    background: #0f1314;
+    overflow: hidden;
+}
 
- .cyberface::before {
+/* =========================
+   BACKGROUND
+========================= */
+
+.cyberface::before {
     content: "";
     position: absolute;
     inset: 0;
     background:
-       linear-gradient(
-            rgba(15, 24, 23, 0.90),
-            rgba(15, 19, 20, 0.90)
+        linear-gradient(
+            rgba(15, 24, 23, 0.92),
+            rgba(15, 19, 20, 0.94)
         ),
-        url('../assets/images/steph.png')
-        center/cover no-repeat !important;  
-        
-        z-index: 0;
-        height: 120vh !important; 
-        
-        
-  
-    
+        url('../assets/images/steph.png') center / cover no-repeat;
+    z-index: -1;
+    pointer-events: none;
 }
+
+/* =========================
+   MAIN CONTAINER
+========================= */
 
 .cyberface-container {
-  width: 100%;
-  max-width: 1100px;
-  margin: 80px auto;
-  padding: 40px;
-  background:transparent;
-  box-sizing: border-box;
-  position: relative;
- 
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    margin: 65px auto 0;
+    padding: 35px 20px;
 }
 
+/* =========================
+   HEADING
+========================= */
 
-
-
-
+.cyberface-heading {
+    text-align: center;
+    margin-bottom: 35px;
+}
 
 .cyberface-container h2 {
-  margin: 0;
-
-  text-align: center;
-
-  font-size: 32px;
-  font-weight: 700;
-
-  letter-spacing: 1px;
-
-  color: #e9e9e9;
+    color: #e9e9e9;
+    font-size: clamp(22px, 3vw, 34px);
+    font-weight: 700;
+    letter-spacing: 1px;
+    line-height: 1.3;
 }
 
+.cyberface-heading p {
+    margin-top: 12px;
+    color: #a6a6a6;
+    font-size: 14px;
+    line-height: 1.6;
+}
 
-
+/* =========================
+   DIVIDER
+========================= */
 
 .cyberface-container .divider {
-  width: 1100px !important;
-  height: 1px;
-  margin-left: -30px;
-  border: none;
-  background: #e0e0e0;
+    width: 100%;
+    height: 1px;
+    margin: 25px 0;
+    border: none;
+    background: rgba(255, 255, 255, 0.2);
 }
 
-
-/* SEARCH SECTION */
+/* =========================
+   SEARCH SECTION
+========================= */
 
 .search-players {
-  background:#131313;
-
-  padding: 30px;
-
-  box-sizing: border-box;
+    width: 100%;
+    padding: 30px;
+    background: #131313;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
 }
 
+/* =========================
+   SEARCH HEADER
+========================= */
 
-/* SEARCH LABEL */
+.search-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+}
 
 .search-players p {
-  margin: 0 0 12px;
-
-  color: #ff3b3b;
-
-  font-size: 14px;
-  font-weight: 600;
-
-  letter-spacing: 1px;
+    color: #ff3b3b;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
 }
 
+.player-count {
+    color: #888;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
 
-/* SEARCH INPUT */
+/* =========================
+   SEARCH INPUT
+========================= */
+
+.search-input-wrapper {
+    position: relative;
+    width: 100%;
+}
 
 .search-players input {
-  width: 100%;
-
-  padding: 14px 16px;
-
-  box-sizing: border-box;
-
-  border: none;
-
-  outline: none;
-
-  background: #ffffff;
-
-  font-size: 16px;
-
-  color: #222;
-  border-radius: 36px;
-  margin-bottom: 20px;
+    width: 100%;
+    height: 50px;
+    padding: 12px 45px 12px 18px;
+    border: 1px solid #333;
+    outline: none;
+    background: #fff;
+    color: #222;
+    font-size: 15px;
+    border-radius: 30px;
+    transition: 0.2s ease;
 }
 
-
-/* INPUT FOCUS */
+.search-players input::placeholder {
+    color: #888;
+}
 
 .search-players input:focus {
-  box-shadow: 0 0 0 2px #777;
+    border-color: #ff3b3b;
+    box-shadow: 0 0 0 3px rgba(255, 59, 59, 0.15);
 }
 
-
-/* DATABASE */
-
-.cyberface-table-container {
-  max-height: 500px;
-  overflow-y: auto;
-  overflow-x: auto;
-
+.clear-search {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: transparent;
+    color: #555;
+    font-size: 17px;
+    cursor: pointer;
 }
 
-.cyberface-table{
-  text-align: center;
-  margin: 0 auto;
+/* =========================
+   ALPHABET FILTER
+========================= */
+
+.alphabet-section {
+    margin: 25px 0;
 }
 
-/* TABLE */
-
-.cyberface-table-container table {
-  width: 100%;
-  border-collapse: collapse;
-  background:#131313;
+.alphabet-heading {
+    margin-bottom: 15px;
 }
 
-
-/* TABLE HEADER */
-
-.cyberface-table-container thead th {
-  position: sticky;
-  top: 0;
-  z-index: 2;
-  padding: 1.5rem 2rem;
-  background:#0b0f19;
-  color: #ffffff;
-  text-align: center;
-
-  font-size: 14px;
-
-  font-weight: 600;
-  letter-spacing: 0.5px;
+.alphabet-heading span {
+    color: #aaa;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
 }
-
-
-/* TABLE CELLS */
-
-.cyberface-table-container tbody td {
-  padding: 13px 12px;
-  border-bottom: 1px solid #dddddd;
-  color: #cfcfcf;
-  background:#202020;
-  font-weight: 500;
-  font-size: 15px;
-}
-
-
-
-.cyberface-table-container tbody tr:nth-child(even) {
-  background: #f7f7f7;
-}
-
-
-
-
-
-.cyberface-table-container tbody tr{
-    text-align: center;
-}
-
-
-
-.cyberface-id {
-  font-weight: 600;
-  font-family: monospace;
-  color: #333;
-}
-
-
-
-.no-results {
-  padding: 20px;
-  text-align: center;
-  background: #ffffff;
-  color: #777;
-  font-size: 15px;
-}
-
-
 
 .alphabet-filter {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  padding: 35px 36px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 9px;
 }
 
 .alphabet-filter button {
-  min-width: 34px;
-  height: 29px;
-  padding: 0 10px;
-  border: 1px solid #e5e7eb;
-  border-radius: 5px;
-  background: transparent;
-  color: #fff;
-  font-size: 13px;
-  cursor: pointer;
-  transition: background 0.2s ease, border-color 0.2s ease;
+    min-width: 36px;
+    height: 36px;
+    padding: 0 10px;
+    border: 1px solid #383838;
+    border-radius: 5px;
+    background: #1c1c1c;
+    color: #ddd;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s ease,
+                border-color 0.2s ease,
+                color 0.2s ease;
 }
 
 .alphabet-filter button:hover,
 .alphabet-filter button.active {
-  background: #ff3b3b;
-  border-color: #ff3b3b;
-  color: #fff;
+    background: #ff3b3b;
+    border-color: #ff3b3b;
+    color: #fff;
+}
+
+/* =========================
+   DATABASE TABLE
+========================= */
+
+.cyberface-table-container {
+    width: 100%;
+    max-height: 550px;
+    overflow-y: auto;
+    overflow-x: auto;
+    border-radius: 5px;
+    border: 1px solid #303030;
+
+    scrollbar-width: thin;
+    scrollbar-color: #ff3b3b #1c1c1c;
+}
+
+.cyberface-table-container::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+}
+
+.cyberface-table-container::-webkit-scrollbar-track {
+    background: #1c1c1c;
+}
+
+.cyberface-table-container::-webkit-scrollbar-thumb {
+    background: #ff3b3b;
+    border-radius: 10px;
+}
+
+.cyberface-table {
+    width: 100%;
+    min-width: 450px;
+    border-collapse: collapse;
+    text-align: center;
+    background: #131313;
+}
+
+/* =========================
+   TABLE HEADER
+========================= */
+
+.cyberface-table thead th {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    padding: 18px 20px;
+    background: #0b0f19;
+    color: #fff;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.7px;
+    white-space: nowrap;
+}
+
+/* =========================
+   TABLE BODY
+========================= */
+
+.cyberface-table tbody td {
+    padding: 14px 15px;
+    border-bottom: 1px solid #303030;
+    background: #202020;
+    color: #cfcfcf;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.cyberface-table tbody tr:nth-child(even) td {
+    background: #191919;
+}
+
+.cyberface-table tbody tr:hover td {
+    background: #292020;
+    transition: background 0.2s ease;
+}
+
+.cyberface-id {
+    font-weight: 600;
+    font-family: monospace;
+    color: #ff5555 !important;
+    letter-spacing: 0.5px;
+}
+
+/* =========================
+   EMPTY RESULTS
+========================= */
+
+.empty-results {
+    padding: 0 !important;
+    text-align: center;
+}
+
+.empty-results-content {
+    padding: 45px 20px;
+}
+
+.empty-results-content span {
+    color: #ff3b3b;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.empty-results-content p {
+    margin: 12px 0 20px;
+    color: #999;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.empty-results-content button {
+    padding: 10px 20px;
+    border: 1px solid #ff3b3b;
+    border-radius: 5px;
+    background: #ff3b3b;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.empty-results-content button:hover {
+    background: transparent;
+    color: #ff3b3b;
+}
+
+/* =========================
+   LARGE DESKTOP
+========================= */
+
+@media (min-width: 1400px) {
+
+    .cyberface-container {
+        max-width: 1200px;
+    }
+
+    .search-players {
+        padding: 35px;
+    }
+
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 1024px) {
+
+    .cyberface-container {
+        max-width: 900px;
+        margin-top: 45px;
+        padding: 20px 10px;
+    }
+
+    .search-players {
+        padding: 25px;
+    }
+
+    .alphabet-filter {
+        gap: 8px;
+    }
+
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+    .cyberface {
+        padding: 1px 12px 40px;
+    }
+
+    .cyberface-container {
+        margin-top: 35px;
+        padding: 15px 0;
+    }
+
+    .cyberface-container h2 {
+        font-size: clamp(20px, 5vw, 27px);
+    }
+
+    .cyberface-heading p {
+        font-size: 13px;
+    }
+
+    .search-players {
+        padding: 20px 15px;
+    }
+
+    .search-header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .search-players p {
+        font-size: 13px;
+    }
+
+    .player-count {
+        font-size: 11px;
+    }
+
+    .search-players input {
+        height: 46px;
+        font-size: 14px;
+    }
+
+    .alphabet-section {
+        margin: 22px 0;
+    }
+
+    .alphabet-filter {
+        gap: 7px;
+    }
+
+    .alphabet-filter button {
+        min-width: 34px;
+        height: 34px;
+        padding: 0 8px;
+        font-size: 12px;
+    }
+
+    .cyberface-table-container {
+        max-height: 500px;
+    }
+
+    .cyberface-table {
+        min-width: 420px;
+    }
+
+    .cyberface-table thead th {
+        padding: 15px 12px;
+        font-size: 12px;
+    }
+
+    .cyberface-table tbody td {
+        padding: 12px 10px;
+        font-size: 13px;
+    }
+
+}
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 480px) {
+
+    .cyberface {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .cyberface-container {
+        margin-top: 25px;
+    }
+
+    .cyberface-container h2 {
+        font-size: 21px;
+        letter-spacing: 0.3px;
+    }
+
+    .cyberface-heading p {
+        font-size: 12px;
+    }
+
+    .cyberface-container .divider {
+        margin: 20px 0;
+    }
+
+    .search-players {
+        padding: 17px 12px;
+    }
+
+    .alphabet-filter {
+        gap: 6px;
+    }
+
+    .alphabet-filter button {
+        min-width: 31px;
+        height: 32px;
+        padding: 0 7px;
+        font-size: 11px;
+    }
+
+    .alphabet-filter button:first-child {
+        min-width: 45px;
+    }
+
+    .cyberface-table {
+        min-width: 380px;
+    }
+
+    .cyberface-table thead th {
+        padding: 13px 8px;
+        font-size: 11px;
+    }
+
+    .cyberface-table tbody td {
+        padding: 11px 8px;
+        font-size: 12px;
+    }
+
+}
+
+/* =========================
+   EXTRA SMALL DEVICES
+========================= */
+
+@media (max-width: 360px) {
+
+    .cyberface-container h2 {
+        font-size: 19px;
+    }
+
+    .search-players {
+        padding: 15px 10px;
+    }
+
+    .alphabet-filter {
+        gap: 5px;
+    }
+
+    .alphabet-filter button {
+        min-width: 29px;
+        height: 30px;
+        padding: 0 5px;
+        font-size: 10px;
+    }
+
 }

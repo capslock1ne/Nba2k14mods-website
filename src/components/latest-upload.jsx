@@ -70,7 +70,7 @@ function LatestUpload() {
 
             <div className="latest-upload-container">
 
-                {/* SECTION HEADER */}
+            
 
                 <div className="latest-header">
 
@@ -80,7 +80,7 @@ function LatestUpload() {
 
                 </div>
 
-                {/* UPLOAD GRID */}
+            
 
                 <div className="latest-categories-grid">
 

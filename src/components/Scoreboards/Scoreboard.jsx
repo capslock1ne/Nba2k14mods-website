@@ -1,83 +1,145 @@
-import React from "react";
-import { useState } from "react";
-import '../Scoreboards/data/scoreboard.css';
+
+import React, { useState } from "react";
+import "../Scoreboards/data/scoreboard.css";
 import ScoreboardData from "./data/scoreboard";
 import ScoreBoardModal from "./Scoreboard-Modal";
+import Credits from "../credits/credit";
 
 
-  const ScoreBoard = () => {
+const ScoreBoard = () => {
 
-               const [showModal, setShowModal] = useState(false);
+    const [selectedScoreboard, setSelectedScoreboard] = useState(null);
 
+    const handleDownload = (downloadUrl) => {
+        if (!downloadUrl) return;
 
-                  return  (
-                    
-              <>
-                
-        <div className="scoreboard">
+        window.open(
+            downloadUrl,
+            "_blank",
+            "noopener,noreferrer"
+        );
+    };
+
+    return (
+        <section className="scoreboard">
 
             <div className="scoreboard-container">
 
-               <p >Updated Team Roster, ratings, and accuracy for overall current NBA teams</p>
-                 <h2  className="scoreboard-subtitle">ROSTERS</h2>
+                {/* HEADER */}
+
+                <div className="scoreboard-header">
+
+                    <p className="scoreboard-intro">
+                      Give your NBA 2K14 experience a fresh look with updated scoreboards, realistic in-game graphics, and custom broadcast designs.
+                     </p>
+
+                    <h2 className="scoreboard-subtitle">
+                        SCOREBOARDS
+                    </h2>
 
                     <hr className="divider" />
 
-                      <div className="scoreboard-grid">
+                </div>
 
-                                  
-                         {ScoreboardData.map((data , index) => {
+                {/* SCOREBOARD GRID */}
 
-                              return (
-                                                   
-                                  <>
-                                 <div className="scoreboard-card" key={index}>
+                <div className="scoreboard-grid">
 
-                                        <div className="scoreboard-info">
-                                            <h2 className="scoreboard-title">{data.title}</h2>
-                                            <img src={data.image} alt="" />
-                                            <p className="date">Date: {data.date}</p>
-                                            <p className="description"> {data.description}</p>
-                                        </div>
+                    {ScoreboardData.map((data, index) => (
 
-                                        <button
-                                            className="view-btn-scoreboard"
-                                            onClick={() => setShowModal(true)}
-                                        >
-                                            View Details
-                                        </button>
+                        <article
+                            className="scoreboard-card"
+                            key={data.id ?? data.title ?? index}
+                        >
 
-                                    </div>
-                                                  
-                                </>
+                            <div className="scoreboard-info">
 
-                           )
+                                {/* TITLE */}
 
-                       })}
-           
-                           </div>
+                                <h2 className="scoreboard-title">
+                                    {data.title}
+                                </h2>
 
-                          {showModal && (
-                                <ScoreBoardModal
-                                 closeModal={() => setShowModal(false)}
-                                
-                                />
+                                {/* IMAGE */}
 
-                          )}
+                                <div className="scoreboard-card-image">
 
+                                    <img
+                                        src={data.image}
+                                        alt={data.title || "Scoreboard preview"}
+                                        loading="lazy"
+                                    />
 
-                     </div>
+                                </div>
 
-                 </div>
-              
-              
-              </>
-          )
+                                {/* DATE */}
 
+                                <p className="date">
+                                    Date: {data.date}
+                                </p>
 
+                                {/* DESCRIPTION */}
 
-            
-        }
+                                <p className="description">
+                                    {data.description}
+                                </p>
 
+                            </div>
+
+                            {/* CARD FOOTER */}
+
+                            <div className="scoreboard-card-footer">
+
+                                <button
+                                    type="button"
+                                    className="scoreboard-download-btn"
+                                    onClick={() => {
+                                        data.downloadUrl?.forEach((file) => {
+                                            window.open(
+                                                file.url,
+                                                "_blank",
+                                                "noopener,noreferrer"
+                                            );
+                                        });
+                                    }}
+                                    disabled={!data.downloadUrl?.length}
+                                >
+                                    Download
+                                </button>
+
+                                <button
+                                    type="button"
+                                    className="view-btn-scoreboard"
+                                    onClick={() => setSelectedScoreboard(data)}
+                                >
+                                    View Details
+                                </button>
+
+                            </div>
+
+                        </article>
+
+                    ))}
+
+                </div>
+
+            </div>
+
+            <Credits />
+
+            {/* SCOREBOARD MODAL */}
+
+            {selectedScoreboard && (
+
+                <ScoreBoardModal
+                    scoreboard={selectedScoreboard}
+                    closeModal={() => setSelectedScoreboard(null)}
+                />
+
+            )}
+
+        </section>
+    );
+};
 
 export default ScoreBoard;

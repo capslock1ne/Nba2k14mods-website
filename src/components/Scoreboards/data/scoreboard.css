@@ -1,166 +1,523 @@
-    @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
 
+/* =========================
+   BASE
+========================= */
 
-    *{
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Ubuntu', sans-serif;
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Ubuntu', sans-serif;
+}
 
+/* =========================
+   SCOREBOARD SECTION
+========================= */
 
-
-
-.scoreboard{
-    background:#0b0f19;
+.scoreboard {
     padding: 200px 200px;
     height: auto;
-    
-    
-    
 }
 
 .scoreboard::before {
     content: "";
     position: absolute;
     inset: 0;
-    background-image: url('./images/scoreboard-img.png');
+    z-index: -1;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     opacity: 0.10;
+
     mask-image: linear-gradient(
         to bottom,
         transparent 0%,
         black 55%,
-        black 70%,
+        black 75%,
         transparent 100%
-    ) !important;
+    );
 
     -webkit-mask-image: linear-gradient(
         to bottom,
         transparent 0%,
         black 55%,
-        black 70%,
+        black 75%,
         transparent 100%
     );
 }
 
+/* =========================
+   CONTAINER
+========================= */
 
-
-.sscoreboard-container{
-    width:90%;
-    max-width:1300px;
+.scoreboard-container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 1300px;
     margin: 0 auto;
-    
-   
 }
 
+/* =========================
+   HEADER
+========================= */
 
-
-.scoreboard-container p{
-    
-    color:#ff3b3b;
-    font-size: 18px;
-
+.scoreboard-intro {
+    color: #ff3b3b;
+    font-size: clamp(14px, 1.5vw, 18px);
+    line-height: 1.6;
 }
 
-.scoreboard-container .date{
-    font-size: 0.9rem;
-    margin-left: 1rem;
-}
-
-.scoreboard-container .description{
-
-  background: rgba(129, 1, 1, 0.2);
-  font-size: 0.8rem;
-  color: rgb(194, 193, 193);
-  backdrop-filter: blur(5px);
-  width: 300px;
-  margin-top: 10px;
-  margin-left: 1rem;
-  -webkit-backdrop-filter: blur(5px);
-  border: 2px solid rgba(255, 65, 65, 0.2);
-  border-radius: 5px;
-  box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.3),
-    inset 0 1px 1px rgba(255, 255, 255, 0.15);
-}
-
-.scoreboard-container  .scoreboard-subtitle{
-    color:rgb(216, 216, 216);
-    text-transform:uppercase;
-    font-size: 2rem;
-    letter-spacing:2px;
+.scoreboard-container .scoreboard-subtitle {
+    color: rgb(216, 216, 216);
+    text-transform: uppercase;
+    font-size: clamp(1.7rem, 3vw, 2rem);
+    letter-spacing: 2px;
     margin-top: 10px;
-    font-weight:700;
+    font-weight: 700;
 }
 
-.modal-description{
-    width: 500px;
-}
+/* =========================
+   DIVIDER
+========================= */
 
-
-.scoreboard-grid{
-
-    display:grid;
-    margin-top: 60px;
-    gap: 30px;
-    grid-template-columns:repeat(3,1fr);
-    
-
-}
-
-.scoreboard-info .scoreboard-title{
-    font-size: 1.2rem;
-    color:rgb(216, 216, 216);
-    text-align: center;
-}
-
-
-.scoreboard-card{
-    
-    width: 90%;
-    height: 110%;
-    background:#131313;
-    border-radius: 15px;
-    overflow: hidden;
-    border: 1px solid #20293c;
-    transition:.35s;
-    cursor: pointer !important;
-}
-
-.scoreboard-card:hover{
-     scale: 1.01;
-}
-
-.view-btn-scoreboard{
-
-    padding: 10px 20px;
-    margin: 0 auto;
+.divider {
+    width: 100%;
     border: none;
-    background-color: #ff3b3b;
-    border-radius: 36px;
-    color: #c7bfbf;
-    cursor: pointer;
-    transform: translate(105%, 50%);
-    transition: all .3s ease;
-    font-weight: bold;
-    
+    border-top: 8px solid #d9dadb;
+    margin: 20px 0 25px;
 }
 
-.view-btn-scoreboard:hover{
+/* =========================
+   SCOREBOARD GRID
+========================= */
+
+.scoreboard-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+/* =========================
+   SCOREBOARD CARD
+========================= */
+
+.scoreboard-card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    width: 340px;
+    padding: 0;
+    height: 92%;
+    background: rgba(15, 15, 15, 0.65);
+    backdrop-filter: blur(12px);
+    margin-top: 10%;
+    -webkit-backdrop-filter: blur(12px);
+     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+    border-radius: 15px;
+    border: 1px solid #2a2e36;
+    overflow: hidden;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.scoreboard-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 59, 59, 0.6);
+}
+
+/* =========================
+   SCOREBOARD INFO
+========================= */
+
+.scoreboard-info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+}
+
+.scoreboard-info .scoreboard-title {
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    color: rgb(216, 216, 216);
+    text-align: center;
+    padding: 18px 12px;
+    overflow-wrap: anywhere;
+}
+
+.scoreboard-info img {
+    display: block;
+    width: auto;
+    aspect-ratio: 16 / 5;
+    height: 180px;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+/* =========================
+   DATE
+========================= */
+
+.scoreboard-container .date {
+    color: #aaa;
+    font-size: 0.9rem;
+    margin: 15px 16px 0;
+}
+
+/* =========================
+   DESCRIPTION
+========================= */
+
+.scoreboard-container .description {
+    width: auto;
+    margin: 12px 16px 18px;
+    padding: 12px;
+
+    background: rgba(129, 1, 1, 0.2);
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: rgb(194, 193, 193);
+
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+
+    border: 1px solid rgba(255, 65, 65, 0.2);
+    border-radius: 5px;
+
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        inset 0 1px 1px rgba(255, 255, 255, 0.15);
+
+    overflow-wrap: anywhere;
+}
+
+/* =========================
+   CARD FOOTER
+========================= */
+
+.scoreboard-card-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 16px 20px;
+    gap: 12px;
+    margin-top: auto;
+}
+
+/* =========================
+   VIEW BUTTON
+========================= */
+
+
+.scoreboard-download-btn{
+    display: block;
+    width: 100%;
+    max-width: 110px;
+    min-height: 38px;
+    padding: 5px 15px;
+    border: 2px solid #ff3b3b;
+    background-color: #ff3b3b;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+.scoreboard-download-btn:hover{
+     background: #5f0000;
+    color: whitesmoke;
+}
+.view-btn-scoreboard {
+    width: 100%;
+    max-width: 140px;
+    padding: 10px 20px;
+
+    border: 2px solid #ff3b3b;
+    background: transparent;
+    border-radius: 10px;
+
+    color: #fff;
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.view-btn-scoreboard:hover {
     background: #5f0000;
     color: whitesmoke;
-    font-weight: bold;
 }
 
+/* =========================
+   MODAL
+========================= */
 
-.scoreboard-info img{
-    width:100%;
-    height:230px;
-    object-fit:cover;
-    cursor: pointer !important;
+.scoreboard-modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
 }
 
+.scoreboard-modal-container {
+    position: relative;
+
+    width: 100%;
+    max-width: 800px;
+    max-height: 90vh;
+
+    padding: 25px;
+    background: #111827;
+
+    border: 1px solid #2a2e36;
+    border-radius: 15px;
+
+    overflow-y: auto;
+}
+
+.scoreboard-modal-title {
+    color: #fff;
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    margin-bottom: 20px;
+    padding-right: 35px;
+}
+
+.scoreboard-modal-image {
+    display: block;
+    width: 100%;
+    max-height: 500px;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.scoreboard-modal-date {
+    color: #aaa;
+    font-size: 0.9rem;
+    margin-top: 15px;
+}
+
+.scoreboard-modal-description {
+    color: #c2c1c1;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    margin-top: 12px;
+    overflow-wrap: anywhere;
+}
+
+.scoreboard-modal-close {
+    position: absolute;
+    top: 15px;
+    right: 18px;
+
+    width: 35px;
+    height: 35px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #ff3b3b;
+    color: #fff;
+
+    font-size: 25px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.scoreboard-modal-close:hover {
+    background: #5f0000;
+}
+
+/* =========================
+   CUSTOM MODAL SCROLLBAR
+========================= */
+
+.scoreboard-modal-container::-webkit-scrollbar {
+    width: 7px;
+}
+
+.scoreboard-modal-container::-webkit-scrollbar-track {
+    background: #111827;
+    border-radius: 10px;
+}
+
+.scoreboard-modal-container::-webkit-scrollbar-thumb {
+    background: #ff3b3b;
+    border-radius: 10px;
+}
+
+.scoreboard-modal-container::-webkit-scrollbar-thumb:hover {
+    background: #5f0000;
+}
+
+/* =========================
+   LARGE TABLETS / SMALL LAPTOPS
+========================= */
+
+@media screen and (max-width: 1100px) {
+
+    .scoreboard {
+        padding-left: 4%;
+        padding-right: 4%;
+    }
+
+    .scoreboard-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 25px;
+    }
+}
+
+/* =========================
+   TABLETS
+========================= */
+
+@media screen and (max-width: 768px) {
+
+    .scoreboard {
+        padding: 130px 5% 60px;
+    }
+
+    .scoreboard-grid {
+        gap: 20px;
+        margin-top: 30px;
+    }
+
+    .scoreboard-info .scoreboard-title {
+        padding: 15px 10px;
+    }
+
+    .scoreboard-info img {
+        aspect-ratio: 16 / 10;
+    }
+
+    .scoreboard-container .description {
+        font-size: 0.8rem;
+    }
+
+    .scoreboard-modal-container {
+        padding: 20px;
+    }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media screen and (max-width: 550px) {
+
+    .scoreboard {
+        padding: 110px 16px 45px;
+    }
+
+    .scoreboard-grid {
+        grid-template-columns: 1fr;
+        gap: 22px;
+        margin-top: 25px;
+    }
+
+    .scoreboard-intro {
+        font-size: 14px;
+    }
+
+    .scoreboard-container .scoreboard-subtitle {
+        font-size: 1.7rem;
+    }
+
+    .divider {
+        border-top-width: 5px;
+        margin: 15px 0 20px;
+    }
+
+    .scoreboard-card {
+        width: 100%;
+        max-width: 420px;
+        margin: 0 auto;
+    }
+
+    .scoreboard-info .scoreboard-title {
+        font-size: 1.15rem;
+    }
+
+    .scoreboard-info img {
+        aspect-ratio: 16 / 9;
+    }
+
+    .scoreboard-container .description {
+        font-size: 0.85rem;
+    }
+
+    .scoreboard-card-footer {
+        padding: 0 16px 20px;
+    }
+
+    .view-btn-scoreboard {
+        max-width: none;
+    }
+
+    .scoreboard-modal-overlay {
+        padding: 12px;
+    }
+
+    .scoreboard-modal-container {
+        max-height: 90vh;
+        padding: 18px;
+    }
+
+    .scoreboard-modal-image {
+        max-height: 350px;
+    }
+}
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media screen and (max-width: 360px) {
+
+    .scoreboard {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .scoreboard-container .scoreboard-subtitle {
+        font-size: 1.5rem;
+    }
+
+    .scoreboard-container .date {
+        font-size: 0.8rem;
+        margin-left: 12px;
+    }
+
+    .scoreboard-container .description {
+        margin-left: 12px;
+        margin-right: 12px;
+        font-size: 0.78rem;
+        padding: 10px;
+    }
+
+    .scoreboard-card-footer {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .scoreboard-modal-container {
+        padding: 15px;
+    }
+
+    .scoreboard-modal-title {
+        font-size: 1.1rem;
+    }
+}

@@ -34,7 +34,7 @@
     flex-direction: column;
 
     width: 100%;
-    max-width: 950px;
+    max-width: 720px;
 
     height: auto;
     max-height: calc(100dvh - 48px);
@@ -159,7 +159,7 @@
     position: absolute;
     top: 50%;
     z-index: 5;
-
+    margin-left: 4rem !important;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -182,20 +182,22 @@
 
 .slide-btn.prev {
     left: 15px;
+
 }
 
 .slide-btn.next {
     right: 15px;
+   
+    
 }
+
 
 .slide-btn:hover {
     background: rgba(255, 59, 59, 0.95);
     transform: translateY(-50%) scale(1.08);
 }
 
-/* =========================
-   SLIDE INDICATORS
-========================= */
+
 
 .slide-indicators {
     display: flex;
@@ -264,7 +266,7 @@
 .modal-info .modal-description {
     width: 100%;
     max-width: none;
-    color: #cbd5e1;
+    color: #ff3b3b;
     font-size: 15px;
     line-height: 1.6;
 }
@@ -273,6 +275,7 @@
     color: #cbd5e1;
     font-size: 15px;
     line-height: 1.7;
+    margin-left: 1rem;
     overflow-wrap: anywhere;
 }
 
@@ -282,7 +285,7 @@
 
 .modal-info .installation {
     margin-top: 25px;
-    font-size: 17px;
+    font-size: 15px;
 }
 
 .roster-installation-list {
@@ -299,45 +302,7 @@
     overflow-wrap: anywhere;
 }
 
-/* =========================
-   GET FILES BUTTON
-========================= */
 
-.court-watch-btn {
-    position: relative;
-    z-index: 2;
-
-    display: inline-flex;
-    flex-shrink: 0;
-    align-items: center;
-    justify-content: center;
-
-    width: fit-content;
-    min-width: 160px;
-    min-height: 46px;
-
-    margin-top: 22px;
-    padding: 11px 25px;
-
-    border: none;
-    border-radius: 30px;
-
-    background: #ff3b3b;
-    color: #fff;
-
-    font-size: 15px;
-    font-weight: 700;
-    text-decoration: none;
-    cursor: pointer;
-
-    transition: 0.2s ease;
-}
-
-.court-watch-btn:hover {
-    background: #ff5555;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(255, 59, 59, 0.25);
-}
 
 /* =========================
    CREDITS
@@ -345,17 +310,14 @@
 
 .button-credits {
     position: relative;
-
     display: flex;
     flex-shrink: 0;
     flex-wrap: wrap;
     align-items: center;
     gap: 10px;
-
     width: 100%;
     margin-top: 28px;
-    padding: 18px 0 10px;
-
+    margin-left: -380px !important;
     border-top: 1px solid #2a2e36;
 }
 

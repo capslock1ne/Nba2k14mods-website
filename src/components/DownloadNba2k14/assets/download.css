@@ -1,9 +1,9 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
 
-/* ==============================
+/* =================================
    GLOBAL SETTINGS
-================================ */
+================================= */
 
 * {
     margin: 0;
@@ -12,44 +12,79 @@
     font-family: 'Ubuntu', sans-serif;
 }
 
+html {
+    min-height: 100%;
+    background: #0f1817;
+}
+
+body {
+    min-height: 100vh;
+    position: relative;
+    isolation: isolate;
+    background: transparent;
+    color: white;
+}
+
+/* =================================
+   ONE CONTINUOUS PAGE BACKGROUND
+================================= */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            rgba(15, 24, 23, 0.86),
+            rgba(15, 19, 20, 0.90)
+        ),
+        url('../assets/newBlackback.jpg');
+
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* =================================
+   KEEP PAGE SECTIONS TRANSPARENT
+================================= */
+
+.community-section,
+.cyberface,
+.download-nba-2k14 {
+    background: transparent !important;
+}
+
+/* =================================
+   DOWNLOAD SECTION
+================================= */
+
 .download-nba-2k14 {
     position: relative;
     isolation: isolate;
 
     width: 100%;
-    min-height: 70vh;
-
-    padding: clamp(40px, 6vw, 90px) 20px;
+    min-height: clamp(550px, 85vh, 900px);
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    text-align: center;
+    padding: clamp(80px, 10vw, 140px) 24px;
+
+    color: white;
+
+    /* No separate background here */
+    background: transparent;
 }
 
-/* ==============================
-   BACKGROUND
-================================ */
-
-.download-nba-2k14::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-
-    background:
-        linear-gradient(
-            rgba(15, 24, 23, 0.92),
-            rgba(15, 19, 20, 0.92)
-        ),
-        url('../assets/kobe.jpg') center/cover no-repeat;
-
-    z-index: -1;
-}
-
-/* ==============================
+/* =================================
    MAIN CONTAINER
-================================ */
+================================= */
 
 .download-nba-2k14 .container {
     position: relative;
@@ -77,9 +112,9 @@
     justify-content: center;
 }
 
-/* ==============================
+/* =================================
    DOWNLOAD ICON
-================================ */
+================================= */
 
 .download-Icon {
     display: block;
@@ -92,9 +127,9 @@
     margin-bottom: 20px;
 }
 
-/* ==============================
+/* =================================
    CONTENT
-================================ */
+================================= */
 
 .download-nba-2k14 .container .content {
     position: relative;
@@ -119,9 +154,9 @@
     margin-bottom: 12px;
 }
 
-/* ==============================
+/* =================================
    HEADING
-================================ */
+================================= */
 
 .download-nba-2k14 .container h2 {
     margin-bottom: 20px;
@@ -137,9 +172,9 @@
     line-height: 1.2;
 }
 
-/* ==============================
+/* =================================
    DESCRIPTION
-================================ */
+================================= */
 
 .download-nba-2k14 .container .content .description {
     width: 100%;
@@ -162,9 +197,9 @@
     color: #ff3b3b;
 }
 
-/* ==============================
+/* =================================
    DOWNLOAD BUTTON
-================================ */
+================================= */
 
 .download-nba-2k14 .container button {
     margin-top: 25px;
@@ -202,9 +237,9 @@
     outline-offset: 4px;
 }
 
-/* ==============================
+/* =================================
    SIDE ARROWS
-================================ */
+================================= */
 
 .side-arrow {
     position: absolute;
@@ -254,9 +289,9 @@
     animation: moveLeft 1.5s ease-in-out infinite;
 }
 
-/* ==============================
+/* =================================
    ARROW ANIMATIONS
-================================ */
+================================= */
 
 @keyframes moveRight {
     0%, 100% {
@@ -282,9 +317,9 @@
     }
 }
 
-/* ==============================
+/* =================================
    TABLETS
-================================ */
+================================= */
 
 @media screen and (max-width: 1024px) {
 
@@ -306,18 +341,16 @@
         width: 35px;
         height: 35px;
     }
-
 }
 
-/* ==============================
+/* =================================
    MOBILE DEVICES
-================================ */
+================================= */
 
 @media screen and (max-width: 768px) {
 
     .download-nba-2k14 {
         min-height: auto;
-
         padding: 50px 18px;
     }
 
@@ -337,7 +370,6 @@
 
     .download-nba-2k14 .container h2 {
         font-size: clamp(1.4rem, 5vw, 1.8rem);
-
         margin-bottom: 15px;
     }
 
@@ -350,16 +382,14 @@
         line-height: 1.6;
     }
 
-    /* Hide arrows to prevent overlapping content */
     .side-arrow {
         display: none;
     }
-
 }
 
-/* ==============================
+/* =================================
    SMALL MOBILE DEVICES
-================================ */
+================================= */
 
 @media screen and (max-width: 480px) {
 
@@ -388,17 +418,14 @@
     .download-nba-2k14 .container button {
         width: 100%;
         max-width: 220px;
-
         min-height: 46px;
-
         font-size: 14px;
     }
-
 }
 
-/* ==============================
+/* =================================
    EXTRA SMALL DEVICES
-================================ */
+================================= */
 
 @media screen and (max-width: 320px) {
 
@@ -417,5 +444,4 @@
     .download-nba-2k14 .container .content .description {
         font-size: 0.82rem;
     }
-
 }
