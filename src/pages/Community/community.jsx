@@ -61,7 +61,7 @@ const Community = () => {
                     </p>
 
                     <a
-                        href="YOUR_DISCORD_LINK"
+                        href="https://discord.gg/n2CDtXVYA"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="discord-btn"
