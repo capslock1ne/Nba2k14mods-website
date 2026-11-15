@@ -88,11 +88,10 @@ body::before {
 
 .download-nba-2k14 .container {
     position: relative;
-
     width: 100%;
     max-width: 760px;
 
-    min-height: 350px;
+    min-height: 450px;
 
     padding: 35px 30px;
 
@@ -201,28 +200,23 @@ body::before {
    DOWNLOAD BUTTON
 ================================= */
 
-.download-nba-2k14 .container button {
-    margin-top: 25px;
+.download-btn{
+    margin-top: 40px !important;
+}
 
+ .download-nba-btn {
     width: min(100%, 200px);
     min-height: 50px;
-
     padding: 10px 15px;
-
     border: 2px solid #ff3b3b;
     border-radius: 8px;
-
+    text-decoration: none;
     background: transparent;
-
     color: rgb(233, 230, 230);
-
     font-size: 15px;
     font-weight: 600;
-
     cursor: pointer;
-
     transition: all 0.25s ease;
-
     box-shadow: 0 8px 20px rgba(58, 4, 4, 0.25);
 }
 

@@ -36,10 +36,14 @@ const Download = () => {
                         other community mods. A clean NBA 2K14 installation
                         is recommended for the best modding experience.
                     </p>
+ 
+                        <div className="download-btn">
+                          <a className="download-nba-btn" type="button" href="https://www.mediafire.com/file/6h1dzp4dvtlnrpq/NBA2K14.rar/file"    target="_blank">
+                                    Get NBA 2K14 Here 
+                          </a>
 
-                    <button type="button">
-                        Get NBA 2K14 Here
-                    </button>
+                        </div>
+                    
 
                 </div>
 
